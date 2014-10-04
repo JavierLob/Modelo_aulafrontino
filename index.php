@@ -14,13 +14,13 @@
 <html lang="es" class="no-js"> <!--<![endif]-->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="SHORT ICON" href="bootstrap/img/icon.png" />
+        <link rel="SHORT ICON" href="bootstrap/img/favicon.ico" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>La hoja geek | Inicio</title>
+        <title>Aulafrontino | Inicio</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
         <style>
             body {
                 padding-top: 60px;
@@ -41,7 +41,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="index.php">La hoja geek</a>
+                    <a class="brand" href="index.php"><img src="bootstrap/img/logo_af.png" width="200px" height="50px"></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="index.php">Inicio</a></li>
@@ -80,9 +80,15 @@
               </ol>
               <div class="carousel-inner" >
                 <div class="item active">
-                  <img src="bootstrap/img/lahojageek_small.png" style="height:300px;width:100%" class="img-responsive" alt="Perry programando">
+                  <img src="bootstrap/img/logo_af.png" style="height:300px;width:100%" class="img-responsive" alt="Perry programando">
                   <div class="carousel-caption">
-                    <p class="text-muted">La hoja geek.</p>
+                    <p class="text-muted">Aulafrontino.</p>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="bootstrap/img/logo_af.png" style="height:300px;width:100%" class="img-responsive" alt="Perry programando">
+                  <div class="carousel-caption">
+                    <p class="text-muted">Aulafrontino.</p>
                   </div>
                 </div>
                 <!--<div class="item">

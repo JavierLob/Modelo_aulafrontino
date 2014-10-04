@@ -2960,12 +2960,12 @@ table th[class*="span"],
 .dropdown-submenu:focus > a {
   color: #ffffff;
   text-decoration: none;
-  background-color: #0081c2;
-  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
-  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-color: #d9534f;
+  background-image: -moz-linear-gradient(top, #d9534f, #d9534f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9534f), to(#d9534f));
+  background-image: -webkit-linear-gradient(top, #d9534f, #d9534f);
+  background-image: -o-linear-gradient(top, #d9534f, #d9534f);
+  background-image: linear-gradient(to bottom, #d9534f, #d9534f);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
@@ -3203,18 +3203,18 @@ button.close {
   *margin-left: .3em;
   font-size: 14px;
   line-height: 20px;
-  color: #333333;
+  color: #FFF;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
   cursor: pointer;
   background-color: #f5f5f5;
   *background-color: #e6e6e6;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #d9534f, #d9534f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9534f), to(#d9534f));
+  background-image: -webkit-linear-gradient(top, #d9534f, #d9534f);
+  background-image: -o-linear-gradient(top, #d9534f, #d9534f);
+  background-image: linear-gradient(to bottom, #d9534f, #d9534f);
   background-repeat: repeat-x;
   border: 1px solid #cccccc;
   *border: 0;
@@ -3238,7 +3238,7 @@ button.close {
 .btn.active,
 .btn.disabled,
 .btn[disabled] {
-  color: #333333;
+  /*color: #333333;*/
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
 }
@@ -3252,7 +3252,7 @@ button.close {
   *margin-left: 0;
 }
 
-.btn:hover,
+/*.btn:hover,
 .btn:focus {
   color: #333333;
   text-decoration: none;
@@ -3261,7 +3261,7 @@ button.close {
      -moz-transition: background-position 0.1s linear;
        -o-transition: background-position 0.1s linear;
           transition: background-position 0.1s linear;
-}
+}*/
 
 .btn:focus {
   outline: thin dotted #333;
@@ -4594,11 +4594,12 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav {
-  position: relative;
-  left: 0;
-  display: block;
-  float: left;
-  margin: 0 10px 0 0;
+position: relative;
+left: 0;
+display: block;
+float: left;
+margin: 20px 30px 0 0;
+font-size: 16px;
 }
 
 .navbar .nav.pull-right {
@@ -4792,13 +4793,12 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-inverse .navbar-inner {
   background-color: #1b1b1b;
-  background-image: -moz-linear-gradient(top, #222222, #111111);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
-  background-image: -webkit-linear-gradient(top, #222222, #111111);
-  background-image: -o-linear-gradient(top, #222222, #111111);
-  background-image: linear-gradient(to bottom, #222222, #111111);
+  background-image: -moz-linear-gradient(to bottom,#F7F7F7,#DBDBDB);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F7F7F7), to(#DBDBDB));
+  background-image: -webkit-linear-gradient(to bottom,#F7F7F7,#DBDBDB);
+  background-image: -o-linear-gradient(to bottom,#F7F7F7,#DBDBDB);
+  background-image: linear-gradient(to bottom, #F7F7F7, #DBDBDB);
   background-repeat: repeat-x;
-  border-color: #252525;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
 }
 
@@ -4833,7 +4833,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .nav .active > a:hover,
 .navbar-inverse .nav .active > a:focus {
   color: #ffffff;
-  background-color: #111111;
+  background-color: #d9534f;
 }
 
 .navbar-inverse .navbar-link {
@@ -4854,7 +4854,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   color: #ffffff;
-  background-color: #111111;
+  background-color: #d9534f;
 }
 
 .navbar-inverse .nav li.dropdown > a:hover .caret,
