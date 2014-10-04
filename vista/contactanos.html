@@ -1,0 +1,51 @@
+<style>
+#texto-informativo p
+{
+	background: #eee;
+	font-size: 15px;
+}
+#texto-informativo p:hover
+{
+	color:#235B77;
+	cursor: default;
+}
+#texto-informativo h4
+{
+	color:#285064;
+	font-size: 18px;
+	font-weight: bold;
+}
+textarea
+{
+	width:100%;
+}	
+</style>
+<div class="row-fluid span8 col-lg-8 pull-left">
+<h3>Contactanos</h3>
+	<form>
+		<div id="texto-informativo" class="row-fluid">
+			<h4><i class="icon-info-sign"></i>Recomendaciones</h4>
+			<p class="text-info">Este es un formulario para contactarnos, debe ingresar su nombre, correo electrónico, asusnto y el contenido del correo.</p>
+		</div>
+		<div class="control-group span6">
+			<label>Nombre</label>
+			<input class="span12" type="text" name="nombre">		
+		</div>
+		<div class="control-group span6">
+			<label>Correo-e</label>
+			<input class="span12" type="text" name="correo">		
+		</div>
+		<div class="control-group span6">
+			<label>Asunto</label>
+			<input class="span12" type="text" name="asunto">		
+		</div>
+		<div id="texto-informativo" class="row-fluid">
+			<h4><i class="icon-info-sign"></i>Recomendaciones</h4>
+			<p class="text-info">Ingrese el detalle del tema que quiere hacernos llegar.</p>
+		</div>
+		<div id="contenido" class="control-group span12 pull-left">
+			<label>Contenido</label>
+			<textarea name="contenido"></textarea>
+		</div>
+	</form>
+</div>
