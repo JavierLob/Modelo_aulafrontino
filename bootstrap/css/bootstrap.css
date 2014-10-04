@@ -6165,3 +6165,21 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+.formulario
+{
+  border: solid 1px #ddd;
+  padding: 20px 20px 0 20px;
+}
+.botonera
+{
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+#btn_registrar
+{
+  margin-bottom: 10px;
+}
+.transaccion input[type="text"]
+{
+  text-transform: uppercase;
+}

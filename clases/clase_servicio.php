@@ -7,6 +7,7 @@
 		private $lcNombre;
 		private $lcEnlace;
 		private $lcModulo;
+		private $lcVisible;
 
 		function set_Servicio($pcIdServicio)
 		{
@@ -27,12 +28,15 @@
 		{
 			$this->lcModulo=$pcModulo;
 		}
-
+		function set_Visible($pcVisible)
+		{
+			$this->lcVisible=$pcVisible;
+		}
 		function consultar_servicios()
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT idtservicio,nombreser,enlaceser,nombremod FROM tservicio,tmodulo WHERE tservicio.tmodulo_idtmodulo=tmodulo.idtmodulo ";
+				$sql="SELECT idtservicio,nombreser,enlaceser,nombremod,visibleser FROM tservicio,tmodulo WHERE tservicio.tmodulo_idtmodulo=tmodulo.idtmodulo ";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -40,6 +44,7 @@
 					$Fila[$cont][1]=$laRow['nombreser'];
 					$Fila[$cont][2]=$laRow['enlaceser'];
 					$Fila[$cont][3]=$laRow['nombremod'];
+					$Fila[$cont][4]=$laRow['visibleser'];
 					$cont++;
 				}
 			
@@ -51,7 +56,7 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT idtservicio,nombreser,enlaceser,nombremod FROM tservicio,tmodulo WHERE tmodulo_idtmodulo='$idmodulo' AND tmodulo_idtmodulo=idtmodulo";
+				$sql="SELECT idtservicio,nombreser,enlaceser,nombremod,visibleser FROM tservicio,tmodulo WHERE tmodulo_idtmodulo='$idmodulo' AND tmodulo_idtmodulo=idtmodulo";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -59,6 +64,7 @@
 					$Fila[$cont][1]=$laRow['nombreser'];
 					$Fila[$cont][2]=$laRow['enlaceser'];
 					$Fila[$cont][3]=$laRow['nombremod'];
+					$Fila[$cont][4]=$laRow['visibleser'];
 					$cont++;
 				}
 			
@@ -69,7 +75,7 @@
 		function consultar_servicio()
 		{
 			$this->conectar();
-				$sql="SELECT idtservicio,nombreser,enlaceser,tmodulo_idtmodulo FROM tservicio WHERE idtservicio='$this->lcIdServicio'";
+				$sql="SELECT idtservicio,nombreser,enlaceser,tmodulo_idtmodulo,visibleser FROM tservicio WHERE idtservicio='$this->lcIdServicio'";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
@@ -77,6 +83,7 @@
 					$Fila[1]=$laRow['nombreser'];
 					$Fila[2]=$laRow['enlaceser'];
 					$Fila[3]=$laRow['tmodulo_idtmodulo'];
+					$Fila[4]=$laRow['visibleser'];
 				}
 			
 			$this->desconectar();
@@ -86,7 +93,7 @@
 		function registrar_servicio()
 		{
 			$this->conectar();
-			$sql="INSERT INTO tservicio (nombreser,enlaceser,tmodulo_idtmodulo)VALUES('$this->lcNombre','$this->lcEnlace','$this->lcModulo')";
+			$sql="INSERT INTO tservicio (nombreser,enlaceser,tmodulo_idtmodulo,visibleser)VALUES('$this->lcNombre','$this->lcEnlace','$this->lcModulo','$this->lcVisible')";
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
@@ -104,7 +111,7 @@
 		function editar_servicio()
 		{
 			$this->conectar();
-			$sql="UPDATE tservicio SET nombreser='$this->lcNombre',enlaceser='$this->lcEnlace',tmodulo_idtmodulo='$this->lcModulo' WHERE idtservicio='$this->lcIdServicio' ";
+			$sql="UPDATE tservicio SET nombreser='$this->lcNombre',enlaceser='$this->lcEnlace',tmodulo_idtmodulo='$this->lcModulo',visibleser='$this->lcVisible' WHERE idtservicio='$this->lcIdServicio' ";
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;

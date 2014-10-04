@@ -7,6 +7,7 @@
 	$lobjServicio->set_Servicio($_POST['idservicio']);
 	$lobjServicio->set_Nombre($_POST['nombreser']);
 	$lobjServicio->set_Enlace($_POST['enlaceser']);
+	$lobjServicio->set_Visible($_POST['visibleser']);
 	$lobjServicio->set_Modulo($_POST['idmodulo']);
 	$operacion=$_POST['operacion'];
 

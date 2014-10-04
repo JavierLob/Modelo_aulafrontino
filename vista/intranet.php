@@ -37,13 +37,15 @@
         $laServicios=$lobjRol->consultar_servicios($laModulos[$i][0]); // aquí se consultan y guardan en la variable $laServicios los servicios que tiene registrado este módulo.
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
         { 
-            $menu.='<li><a href="?vista='.$laServicios[$j][2].'">'.$laServicios[$j][1].'</a></li>'; //aqui se van agregando cada uno de los servicios al menú.
+            if($laServicios[$j][3])//Sí el servicio es visible para el menú lo agrega, sino no
+            {    
+                $menu.='<li><a href="?vista='.$laServicios[$j][2].'">'.$laServicios[$j][1].'</a></li>'; //aqui se van agregando cada uno de los servicios al menú.
+            }
             if($vista=="" || $vista==$laServicios[$j][2])//aquí voy comparando los servicios del usuario con la direccion a la cual a entrado.
             {
-
                 $Acceso_servicio=true;
 
-            }                                
+            }                                       
         } 
         $menu.='</ul>'; 
         $menu.='</li>'; //se cierra la construccion del menú

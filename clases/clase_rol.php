@@ -59,18 +59,19 @@
 			$this->desconectar();
 			return $Fila;
 		}
-
+		
 		function consultar_servicios($IdModulo)
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT idtservicio,nombreser,enlaceser FROM trol_has_tservicio,tservicio WHERE trol_idtrol='$this->lcIdRol' AND tmodulo_idtmodulo='$IdModulo' AND tservicio_idtservicio=idtservicio ";
+				$sql="SELECT idtservicio,nombreser,enlaceser,visibleser FROM trol_has_tservicio,tservicio WHERE trol_idtrol='$this->lcIdRol' AND tmodulo_idtmodulo='$IdModulo' AND tservicio_idtservicio=idtservicio ";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
 					$Fila[$cont][0]=$laRow['idtservicio'];
 					$Fila[$cont][1]=$laRow['nombreser'];
 					$Fila[$cont][2]=$laRow['enlaceser'];
+					$Fila[$cont][3]=$laRow['visibleser'];
 					$cont++;
 				}
 			
