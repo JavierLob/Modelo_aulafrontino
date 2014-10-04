@@ -1,5 +1,4 @@
 <?php
-    /* ESTE MODELO DE SEGURIDAD ESTÁ HECHO CON FINES ACADEMICOS, SU DISTRIBUCIÓN ES GRATUITA, CUALQUIER ADAPTACIÓN, MODIFICACIÓN O MEJORA QUE SE HAGA APARTIR DE ESTE CODIGO DEBE SER NOTIFICADA A LA COMUNIDAD DE LA CUAL FUE OBTENIDO Y/0 A SU CREADOR JAVIER MARTÍN AL CORREO RECUPERA.JAVIER@GMAIL.COM */
     require_once("../clases/clase_servicio.php");
     $lobjServicio=new clsServicio;
     
@@ -10,22 +9,23 @@
 ?>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Consultar servicio</h3>
+    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras ver y modificar el servicio que consultaste.</div>
     <form class="formulario" action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="editar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio" value="<?php echo $laServicio[0];?>"/>
         <div class="row-fluid">
             <div class="col-lg-6 span6">            
-                <label>Nombre</label>
+                <label>Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del servicio."><i class="fa fa-question" ></i></span></label>
                 <input type="text" name="nombreser" id="cam_nombreser" value="<?php echo $laServicio[1];?>" required/>
             </div>
             <div class="col-lg-6 span6">
-                <label>Enlace</label>
+                <label>Enlace <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Enlace del servicio."><i class="fa fa-question" ></i></span></label>
                 <input type="text" name="enlaceser" id="cam_nombreser" value="<?php echo $laServicio[2];?>" required/>
             </div>
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">            
-                <label>Módulo</label>
+                <label>Módulo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Módulo al que pertenece el servicio."><i class="fa fa-question" ></i></span></label>
                 <select name="idmodulo" id="cam_idmodulo" required>
                     <option value="">Seleccione un módulo</option>
                     <?php

@@ -1,28 +1,35 @@
-<!-- ESTE MODELO DE SEGURIDAD ESTÁ HECHO CON FINES ACADEMICOS, SU DISTRIBUCIÓN ES GRATUITA, CUALQUIER ADAPTACIÓN, MODIFICACIÓN O MEJORA QUE SE HAGA APARTIR DE ESTE CODIGO DEBE SER NOTIFICADA A LA COMUNIDAD DE LA CUAL FUE OBTENIDO Y/0 A SU CREADOR JAVIER MARTÍN AL CORREO RECUPERA.JAVIER@GMAIL.COM -->
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Asignar servicio</h3>
-    <form action="../controlador/control_rol.php" method="POST" name="form_servicio">
+    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras asignar los servicios al rol que seleccione.</div>
+    <form class="formulario" action="../controlador/control_rol.php" method="POST" name="form_servicio">
         <input type="hidden" value="asignar_servicio" name="operacion" />
-        <label><h5>Rol</h5></label>
-        <select name="idrol" id="cam_idrol" onchange="buscar_modulo(this.value);" required>
-            <option value="">Seleccione un rol</option>
-            <?php
-            require_once('../clases/clase_rol.php');
-            $lobjRol=new clsrol;
-            $laroles=$lobjRol->consultar_roles();
-            for($i=0;$i<count($laroles);$i++)
-            {
-                if($laroles[$i][0]==$_GET['id'])
-                {
-                    echo '<option value="'.$laroles[$i][0].'" selected>'.$laroles[$i][1].'</option>';
-                }
-                else
-                {
-                    echo '<option value="'.$laroles[$i][0].'">'.$laroles[$i][1].'</option>';
-                }
-            }
-            ?>
-        </select>
+        <div class="row-fluid">
+            <div class="col-lg-6 span6">
+                <label><h5>Rol <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Rol al cual se le asignarán los servicios de los módulos que tiene asignado."><i class="fa fa-question" ></i></span></h5> </label>
+                <select name="idrol" id="cam_idrol" onchange="buscar_modulo(this.value);" required>
+                    <option value="">Seleccione un rol</option>
+                    <?php
+                    require_once('../clases/clase_rol.php');
+                    $lobjRol=new clsrol;
+                    $laroles=$lobjRol->consultar_roles();
+                    for($i=0;$i<count($laroles);$i++)
+                    {
+                        if($laroles[$i][0]==$_GET['id'])
+                        {
+                            echo '<option value="'.$laroles[$i][0].'" selected>'.$laroles[$i][1].'</option>';
+                        }
+                        else
+                        {
+                            echo '<option value="'.$laroles[$i][0].'">'.$laroles[$i][1].'</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="col-lg-12 span12">
+
         <h5>Servicios</h5>
             <?php
                 $lobjRol->set_Rol($_GET['id']);
@@ -32,7 +39,7 @@
                     require_once('../clases/clase_servicio.php');
                     $lobjServicio=new clsServicio;
                     $laServicios=$lobjServicio->consultar_servicios_modulo($laModulos[$i][0]);
-                    echo '<div class="col-lg-3 span3 pull-left">';                  
+                    echo '<div class="col-lg-5 span5 pull-left">';                  
                         echo '<h5>'.$laModulos[$i][1].'</h5>';
                         if($laServicios)
                         {
@@ -62,7 +69,9 @@
                     echo "</div>";
                 }
             ?>
-        <div class="col-lg-8 span8 pull-left " style="display: block;">
+        </div>
+    </div>
+        <div class="botonera" >
             <input type="submit" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="ACEPTAR">
             <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="REGRESAR" onclick="window.location.href='?vista=rol/asignar_modulo';">
         </div>

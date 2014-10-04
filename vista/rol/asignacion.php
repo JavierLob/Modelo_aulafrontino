@@ -1,4 +1,3 @@
-<!-- ESTE MODELO DE SEGURIDAD ESTÁ HECHO CON FINES ACADEMICOS, SU DISTRIBUCIÓN ES GRATUITA, CUALQUIER ADAPTACIÓN, MODIFICACIÓN O MEJORA QUE SE HAGA APARTIR DE ESTE CODIGO DEBE SER NOTIFICADA A LA COMUNIDAD DE LA CUAL FUE OBTENIDO Y/0 A SU CREADOR JAVIER MARTÍN AL CORREO RECUPERA.JAVIER@GMAIL.COM -->
 <script>
   function eliminar(id)
   {
@@ -11,6 +10,8 @@
 </script>    
 <div style="float: left" class="col-lg-10 span10 pull-left">
     <h3>Asignación de módulos/servicios</h3>
+    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras ver y asignar los módulos y servicios a los roles del sistema.</div>
+
     <form action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="quitar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>

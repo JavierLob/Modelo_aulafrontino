@@ -1,9 +1,9 @@
-<!-- ESTE MODELO DE SEGURIDAD ESTÁ HECHO CON FINES ACADEMICOS, SU DISTRIBUCIÓN ES GRATUITA, CUALQUIER ADAPTACIÓN, MODIFICACIÓN O MEJORA QUE SE HAGA APARTIR DE ESTE CODIGO DEBE SER NOTIFICADA A LA COMUNIDAD DE LA CUAL FUE OBTENIDO Y/0 A SU CREADOR JAVIER MARTÍN AL CORREO RECUPERA.JAVIER@GMAIL.COM -->
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Asignar módulo</h3>
-    <form action="../controlador/control_rol.php" method="POST" name="form_servicio">
+    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras asignar los módulos  al rol que seleccione.</div>
+    <form class="formulario" action="../controlador/control_rol.php" method="POST" name="form_servicio">
         <input type="hidden" value="asignar_modulo" name="operacion" />
-        <label><h5>Rol</h5></label>
+        <label><h5>Rol <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Rol al cual se le asignarán los módulos."><i class="fa fa-question" ></i></span></h5></label>
         <select name="idrol" id="cam_idrol" onchange="buscar_modulo(this.value);" required>
             <option value="">Seleccione un rol</option>
             <?php
@@ -49,7 +49,7 @@
                 }
             ?>
         </div>
-        <div class="display: block;">
+        <div class="botonera">
             <input type="submit" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="ACEPTAR">
             <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="REGRESAR" onclick="window.location.href='?vista=rol/asignacion';">
         </div>

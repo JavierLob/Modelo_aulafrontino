@@ -1,22 +1,23 @@
 
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Registrar servicio</h3>
+    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras registrar un servicio en el sistema.</div>
     <form class="formulario" action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="registrar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>
         <div class="row-fluid">
             <div class="col-lg-6 span6">            
-                <label>Nombre</label>
+                <label>Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del servicio."><i class="fa fa-question" ></i></span></label>
                 <input type="text" name="nombreser" id="cam_nombreser" required/>
             </div>
             <div class="col-lg-6 span6">
-                <label>Enlace</label>
+                <label>Enlace <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Enlace del servicio."><i class="fa fa-question" ></i></span></label>
                 <input type="text" name="enlaceser" id="cam_nombreser" required/>
             </div>
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">            
-                <label>Módulo</label>
+                <label>Módulo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Módulo al que pertenece el servicio."><i class="fa fa-question" ></i></span></label>
                 <select name="idmodulo" id="cam_idmodulo" required>
                     <option value="">Seleccione un módulo</option>
                     <?php

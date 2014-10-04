@@ -1,4 +1,3 @@
-<!-- ESTE MODELO DE SEGURIDAD ESTÁ HECHO CON FINES ACADEMICOS, SU DISTRIBUCIÓN ES GRATUITA, CUALQUIER ADAPTACIÓN, MODIFICACIÓN O MEJORA QUE SE HAGA APARTIR DE ESTE CODIGO DEBE SER NOTIFICADA A LA COMUNIDAD DE LA CUAL FUE OBTENIDO Y/0 A SU CREADOR JAVIER MARTÍN AL CORREO RECUPERA.JAVIER@GMAIL.COM -->
 <?php
 $consultar= $registrar= $eliminar=false;
 for($i=0;$i<count($laModulos);$i++) 
@@ -38,6 +37,7 @@ for($i=0;$i<count($laModulos);$i++)
 </script>    
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Servicios</h3>
+    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras registrar, cosultar, modificar y eliminar los servicios del sistema.</div>
     <?php
     if($registrar)
     {

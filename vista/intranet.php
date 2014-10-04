@@ -91,6 +91,7 @@
         <link href="../libreria/css/formularios.css" rel="stylesheet" type="text/css" />
         <script src="../bootstrap/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <link href="../bootstrap/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <script>window.jQuery || document.write('<script src="../bootstrap/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
         <script src="../bootstrap/js/vendor/bootstrap.min.js"></script>
@@ -107,6 +108,11 @@
                         "iDisplayLength": 5                    
                     });
                 } );
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $("[data-toggle='popover']").popover();
+            });
         </script>
         <!--datatable-->
     </head>
@@ -159,7 +165,7 @@
     
 
             <footer style="text-align:center;" class="col-lg-12 span12 pull-left" >
-                <p >&copy; Javier Martín 2013</p>
+                <p >&copy; Equipo de desarrollo aulafrontino.</p>
             </footer>
 
         </section> <!-- /container -->
