@@ -4,7 +4,7 @@ class ModeloConect
 	private $servidor='Localhost';
 	private $usuario='root';
 	private $clave='';
-	private $bd='modelo_seguridad';
+	private $bd='bd_sistema_inscripcion';
 	protected $laRow = array();
 	private $con;
 	private $res;
