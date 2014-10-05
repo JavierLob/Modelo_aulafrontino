@@ -103,6 +103,32 @@
 			return $Fila;
 		}
 
+		function listar_cursos_activos()
+		{
+			$this->conectar();
+			$cont=0;
+			$sql="SELECT tcurso.*,date_format(fecha_aperturacur,'%d-%m-%Y')as fecha_aperturacur,date_format(fecha_cierrecur,'%d-%m-%Y')as fecha_cierrecur,tasignatura.nombreasi,CONCAT_WS(' ',tprofesor.nombre_unopro,tprofesor.apellido_unopro)as profesor FROM tcurso,tasignatura,tprofesor WHERE tcurso.idasignatura=tasignatura.idasignatura AND tcurso.idprofesor=tprofesor.idprofesor AND estatuscur='1'";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]['idcurso']=$laRow['idcurso'];
+				$Fila[$cont]['nombrecur']=$laRow['nombrecur'];
+				$Fila[$cont]['seccioncur']=$laRow['seccioncur'];
+				$Fila[$cont]['fecha_aperturacur']=$laRow['fecha_aperturacur'];
+				$Fila[$cont]['fecha_cierrecur']=$laRow['fecha_cierrecur'];
+				$Fila[$cont]['cupos_disponiblecur']=$laRow['cupos_disponiblecur'];
+				$Fila[$cont]['cant_inscritoscur']=$laRow['cant_inscritoscur'];
+				$Fila[$cont]['idasignatura']=$laRow['idasignatura'];
+				$Fila[$cont]['idprofesor']=$laRow['idprofesor'];
+				$Fila[$cont]['nombreasi']=$laRow['nombreasi'];
+				$Fila[$cont]['profesor']=$laRow['profesor'];
+				$Fila[$cont]['estatuscur']=$laRow['estatuscur'];
+				$cont++;
+			}
+			$this->desconectar();
+			return $Fila;
+		}
+
 		
 		function consultar_curso()
 		{

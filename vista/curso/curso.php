@@ -53,7 +53,11 @@
 <?php
     if($registrar)
     {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=curso/registrar_curso"><i class="icon-plus icon-white"></i> Registrar curso</a>';
+        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=curso/registrar_curso"><i class="fa fa-plus"></i> Registrar curso</a> ';
+    }
+    if($registrar)
+    {
+        echo '<a class="btn btn-success" id="btn_reporte" target="_blank" href="../reporte/listado_cursos_activos.php"><i class="fa fa-file-text"></i> Listado de cursos activos</a>';
     }
 ?>
 <form role="form" class="form" action="../controlador/control_curso.php" method="POST" name="form_curso">
