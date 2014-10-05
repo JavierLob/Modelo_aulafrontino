@@ -64,7 +64,7 @@
             <button type="button" class="btn btn-danger center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=servicio/servicio';"><i class="fa fa-chevron-left"></i> Regresar</button>
           </div>
           <div class="col-md-6">
-            <button type="submit" class="btn btn-danger center-block"><i class="fa fa-check" name="btn_enviar" id="btn_enviar"></i> Aceptar</button>
+            <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check"></i> Aceptar</button>
           </div>
         </div>
     </form>
