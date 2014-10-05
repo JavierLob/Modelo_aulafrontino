@@ -9,7 +9,6 @@
 
 	$lobjUsuario->set_Usuario($usuario);//Envia el dato USUARIO a la clase clsUsuario Mediante el metodo SET_
 	$lobjUsuario->set_Clave($clave);//Envia el dato CLAVE a la clase clsUsuario Mediante el metodo SET_
-	
 	//En esta serie de IF() se intenta determinar desde donde fue accionado o llamado este archivo, si desde el index con el botón ENTRAR o desde la intranet con el botón SALIR.
 	if($_POST['entrar'])//Si es desde el botón ENTRAR ingresa en la condición.
 	{

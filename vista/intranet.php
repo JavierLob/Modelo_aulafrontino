@@ -31,7 +31,7 @@
     {
         // se arma en la variable $menu todo el menu que se le mostrará al usuario
         $menu.='<li class="dropdown">'; 
-        $menu.='<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$laModulos[$i][1].'<b class="caret"></b></a>';//Aquí se guar el nombre del módulo y los servicios de este modulo se van a ir anidando a partir de aquí.
+        $menu.='<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$laModulos[$i][1].'<span class="caret"></span></a>';//Aquí se guar el nombre del módulo y los servicios de este modulo se van a ir anidando a partir de aquí.
         $menu.='<ul class="dropdown-menu">';
 
         $laServicios=$lobjRol->consultar_servicios($laModulos[$i][0]); // aquí se consultan y guardan en la variable $laServicios los servicios que tiene registrado este módulo.
@@ -65,94 +65,68 @@
     }
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
-<html lang="es" class="no-js"> <!--<![endif]-->
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="SHORT ICON" href="../bootstrap/img/favicon.ico" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Aulafrontino | Intranet</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="../bootstrap/css/main.css">
-        <link href="../bootstrap/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
-        <link href="../libreria/css/datatable/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css" />
-        <link href="../libreria/css/formularios.css" rel="stylesheet" type="text/css" />
-        <script src="../bootstrap/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <link href="../bootstrap/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <script>window.jQuery || document.write('<script src="../bootstrap/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-
-        <script src="../bootstrap/js/vendor/bootstrap.min.js"></script>
-
-        <script src="../bootstrap/js/plugins.js"></script>
-        <script src="../bootstrap/js/main.js"></script>
-        <!--datatable-->
-        <script type="text/javascript" language="javascript" src="../libreria/js/datatable/jquery.dataTables.js"></script>
-        <script type="text/javascript" charset="utf-8">
-                $(document).ready(function() {
-                    oTable = $('#filtro').dataTable({
-                        "bJQueryUI": true,
-                        "sPaginationType": "full_numbers",
-                        "iDisplayLength": 5                    
-                    });
-                } );
-        </script>
-        <script src="../bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $("[data-toggle='popover']").popover();
-            });
-        </script>
-        <!--datatable-->
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
-
-        <header class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="intranet.php"><img src="../bootstrap/img/logo_af.png" width="200px" height="50px"></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <?php
-                                echo $menu; //se imprime el menú construido
-                            ?>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                     <form class="navbar-form pull-right" name="form_intranet" action="../controlador/control_acceso.php" method="POST">
-                            <input type="submit" name="salir" class="btn" value="Salir">
-                        </form>
-                </div>
-            </div>
-        </header>
-
-        <section class="container-fluid">
-            
-            <div class="span12" style="display:block;">
-                <?php
-                     if(file_exists($vista.'.php')) //verifica el contenido de la variable vista.
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="SHORT ICON" href="../bootstrap-3/img/favicon.ico">
+    <title>Modelo de seguridad</title>
+    <!-- CSS -->
+    <link href="../bootstrap-3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap-3/css/style-intranet.css" rel="stylesheet">
+    <link href="../bootstrap-3/DataTables-1.10.2/media/css/jquery.dataTables.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- EMPIEZA: MENU SUPERIOR -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img height="100%;" src="../bootstrap-3/img/logo_af.png"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav movil">
+            <li class="active"><a href="intranet.php">Inicio</a></li>          
+            <?php echo $menu;?>
+          </ul>
+          <div class="navbar-form navbar-right">
+                <form name="form_intranet" action="../controlador/control_acceso.php" method="POST">
+                    <input type="submit" name="salir"  class="btn btn-danger" value="Salir">
+                </form>
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- FIN: MENU SUPERIOR -->
+    <!-- EMPIEZA: CONTENEDOR -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- EMPIEZA: SIDEBAR -->
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="intranet.php">Inicio</a></li>          
+            <?php echo $menu;?>
+          </ul>
+        </div>
+        <!-- FIN: SIDEBAR -->
+        <!-- EMPIEZA: CUERPO -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <?php
+                if(file_exists($vista.'.php')) //verifica el contenido de la variable vista.
                 {
                         include($vista.'.php');// y si exite el archivo que trae este incluirá el cintenido
                 }   
@@ -161,18 +135,29 @@
                     include_once("panel_inicio.php");// Si no exite o no tiene nada la variable vista entonces trae por defecto la vista panel_inicio.php
                 }
                     
-                ?>
-                    
-            </div>
-    
+            ?>       
 
-            <footer style="text-align:center;" class="col-lg-12 span12 pull-left" >
-                <p >&copy; Equipo de desarrollo aulafrontino.</p>
-            </footer>
+          <!-- EMPIEZA: PIE -->
+          <footer>© Equipo de desarrollo aulafrontino.</footer>
+          <!-- FIN: PIE -->
+        </div>
+        <!-- FIN: CUERPO -->
+      </div>
+    </div>
+    <!-- FIN: CONTENEDOR -->
+    <!-- jQuery (necesario para los plugins de bootstrap) -->
+    <script src="../bootstrap-3/DataTables-1.10.2/media/js/jquery.js"></script>
+    <!-- Incluye todos los plugins después de esta línea -->
+    <script src="../bootstrap-3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../bootstrap-3/DataTables-1.10.2/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('#filtro').dataTable();
+    } );
+        $(function () {
+            $("[data-toggle='popover']").popover();
+        });
 
-        </section> <!-- /container -->
-
-        
-    </body>
+    </script>
+  </body>
 </html>
-

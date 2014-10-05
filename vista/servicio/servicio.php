@@ -35,19 +35,22 @@ for($i=0;$i<count($laModulos);$i++)
     }
   }
 </script>    
-<div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Servicios</h3>
-    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras registrar, cosultar, modificar y eliminar los servicios del sistema.</div>
+    <h1 class="page-header">Servicios</h1>
+    <!-- EMPIEZA: RECOMENDACION -->
+          <div class="alert alert-info" role="alert">
+            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y eliminar los servicios del sistema.
+          </div>
+    <!-- FIN: RECOMENDACION -->
     <?php
     if($registrar)
     {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=servicio/registrar_servicio"><i class="icon-plus icon-white"></i> Registrar servicio</a>';
+        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=servicio/registrar_servicio"><i class="fa fa-plus"></i> Registrar servicio</a>';
     }
     ?>
-    <form action="../controlador/control_servicio.php" method="POST" name="form_servicio">
+    <form action="../controlador/control_servicio.php" method="POST" name="form_servicio" role="form" class="form">
         <input type="hidden" value="eliminar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>
-        <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
+        <table class="cell-border compact hover stripe" id="filtro">
             <thead>
                 <th>Codigo</th><th>Nombre</th><th>enlace</th><th>módulo</th><?php if($consultar || $eliminar)
                         { echo '<th>Operación</th>';}?>
@@ -69,11 +72,11 @@ for($i=0;$i<count($laModulos);$i++)
                             echo '<td>';
                             if($consultar)
                             {
-                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$laServicios[$i][0].')"><i class="icon-search icon-white"></i></a>';
+                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$laServicios[$i][0].')"><i class="fa fa-search"></i></a>';
                             }
                             if($eliminar)
                             {
-                                echo ' <a class="btn btn-danger" href="#" onclick="eliminar('.$laServicios[$i][0].')" ><i class="icon-remove icon-white"></i></a>';
+                                echo ' <a class="btn btn-danger" href="#" onclick="eliminar('.$laServicios[$i][0].')" ><i class="fa fa-remove"></i></a>';
                             }
                             echo "</td>";
                         }
