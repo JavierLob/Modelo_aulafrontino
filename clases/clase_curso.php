@@ -133,7 +133,7 @@
 		function consultar_curso()
 		{
 			$this->conectar();
-			$sql="SELECT *,date_format(fecha_aperturacur,'%d-%m-%Y')as fecha_aperturacur,date_format(fecha_cierrecur,'%d-%m-%Y')as fecha_cierrecur FROM tcurso WHERE idcurso='$this->lnIdCurso'";
+			$sql="SELECT *,date_format(fecha_aperturacur,'%d-%m-%Y')as fecha_aperturacur,date_format(fecha_cierrecur,'%d-%m-%Y')as fecha_cierrecur, nombreasi, CONCAT_WS(' ',tprofesor.nombre_unopro,tprofesor.apellido_unopro)as profesor FROM tcurso, tasignatura, tprofesor WHERE idcurso='$this->lnIdCurso' AND tcurso.idprofesor=tprofesor.idprofesor AND tasignatura.idasignatura = tcurso.idasignatura";
 			$pcsql=$this->filtro($sql);
 			if($laRow=$this->proximo($pcsql))
 			{
@@ -147,6 +147,8 @@
 				$Fila['idasignatura']=$laRow['idasignatura'];
 				$Fila['idprofesor']=$laRow['idprofesor'];
 				$Fila['estatuscur']=$laRow['estatuscur'];
+				$Fila['nombreasi']=$laRow['nombreasi'];
+				$Fila['profesor']=$laRow['profesor'];
 			}
 			$this->desconectar();
 			return $Fila;
@@ -187,6 +189,17 @@
 			$this->conectar();
 			$sql="UPDATE tcurso SET 
 					nombrecur='$this->lcNombre',seccioncur='$this->lnSeccion',fecha_aperturacur='$this->ldFecha_apertura',fecha_cierrecur='$this->ldFecha_cierre',cupos_disponiblecur='$this->lnCupos',cant_inscritoscur='$this->lnCantidad',idasignatura='$this->lnIdAsignatura',idprofesor='$this->lnIdProfesor' 
+					WHERE idcurso='$this->lnIdCurso' ";
+			$lnHecho=$this->ejecutar($sql);			
+			$this->desconectar();
+			return $lnHecho;
+		}
+
+		function actualizar_inscritos($cupos_disponiblecur, $total_inscritos)
+		{
+			$this->conectar();
+			$sql="UPDATE tcurso SET 
+					cupos_disponiblecur='$cupos_disponiblecur' ,cant_inscritoscur='$total_inscritos'
 					WHERE idcurso='$this->lnIdCurso' ";
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();

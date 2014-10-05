@@ -44,8 +44,29 @@
 
 		public function registrar_inscripcion()
 		{
-
+			$this->conectar();
+			$sql="INSERT INTO `tinscripcion`(`idestudiante`, `idcurso`, `estatus`) 
+					VALUES 
+				  ('$this->lnEstudiante','$this->lnCurso','$this->llEstatus')";
+			$lnHecho=$this->ejecutar($sql);			
+			$this->desconectar();
+			return $lnHecho;
 		}
+
+		public function validar_inscripcion($idestudiante, $idcurso)
+		{
+			$inscrito = false;
+			$this->conectar();
+			$sql="SELECT * FROM tinscripcion WHERE idestudiante='$idestudiante' AND idcurso='$idcurso' AND estatus='1';";
+			$pcsql=$this->filtro($sql);
+			if($laRow=$this->proximo($pcsql))
+			{
+				$inscrito = true;
+			}
+			$this->desconectar();
+			return $inscrito;
+		}
+
 /*tinscripcion
 Columna	Tipo	Nulo	Predeterminado	Enlaces a 	Comentarios
 idinscripcion 	int(11)	No 	  	  	 
