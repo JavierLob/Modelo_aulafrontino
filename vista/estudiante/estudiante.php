@@ -55,15 +55,15 @@ function activar(id)
     <?php
     if($registrar)
     {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=estudiante/registrar_estudiante"><i class="fa fa-plus"></i> Registrar asignatura</a>';
+        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=estudiante/registrar_estudiante"><i class="fa fa-plus"></i> Registrar estudiante</a>';
     }
     ?>
-    <form action="../controlador/control_asignatura.php" method="POST" name="form_asignatura" role="form" class="form">
-        <input type="hidden" value="desactivar_asignatura" name="operacion" id="cam_operacion"/>
-        <input type="hidden"  name="idasignatura" id="cam_idasignatura"/>
+    <form action="../controlador/control_estudiante.php" method="POST" name="form_estudiante" role="form" class="form">
+        <input type="hidden" value="desactivar_estudiante" name="operacion" id="cam_operacion"/>
+        <input type="hidden"  name="idestudiante" id="cam_idestudiante"/>
         <table class="cell-border compact hover stripe" id="filtro">
             <thead>
-                <th>Nro.</th><th>Código</th><th>Nombre</th><th>Descripción</th><th>Año</th><th>Unidades de credito</th><th>Horas</th><?php if($consultar || $desactivar)
+                <th>Nro.</th><th>Cédula</th><th>Apellidos</th><th>Nombres</th><th>Télefono</th><th>Correo</th><?php if($consultar || $desactivar)
                         { echo '<th>Operación</th>';}?>
             </thead>
             <tbody>
