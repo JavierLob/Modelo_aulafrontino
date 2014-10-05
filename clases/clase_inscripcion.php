@@ -17,29 +17,34 @@
 	        $this->llEstatus 			= true;
     	}
 
-    	function set_Inscripcion($pnInscripcion)
+    	public function set_Inscripcion($pnInscripcion)
 		{
 			$this->lnInscripcion=$pnInscripcion;
 		}
 
-		function set_Estudiante($pnEstudiante)
+		public function set_Estudiante($pnEstudiante)
 		{
 			$this->lnEstudiante=$pnEstudiante;
 		}
 
-		function set_Curso($pnCurso)
+		public function set_Curso($pnCurso)
 		{
 			$this->lnCurso=$pnCurso;
 		}
 
-		function set_Fecha($pdFecha)
+		public function set_Fecha($pdFecha)
 		{
 			$this->ldFecha_Inscripcion=$pdFecha;
 		}
 
-		function set_Estatus($plEstatus)
+		public function set_Estatus($plEstatus)
 		{
 			$this->llEstatus=$plEstatus;
+		}
+
+		public function registrar_inscripcion()
+		{
+
 		}
 /*tinscripcion
 Columna	Tipo	Nulo	Predeterminado	Enlaces a 	Comentarios
