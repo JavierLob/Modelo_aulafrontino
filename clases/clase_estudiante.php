@@ -117,6 +117,31 @@
 			return $laEstudiante;
 		}
 
+		public function consultar_estudiante_cedula()
+		{
+			$laEstudiante = array();
+			$this->conectar();
+			$sql = "SELECT * FROM testudiante WHERE cedulaest='$this->lcCedula';";
+			$pcsql = $this->filtro($sql);
+			while($laRow = $this->proximo($pcsql))
+			{
+				$laEstudiante['idestudiante']	= $laRow['idestudiante'];
+				$laEstudiante['cedulaest']		= $laRow['cedulaest'];
+				$laEstudiante['nombre_unoest']	= $laRow['nombre_unoest'];
+				$laEstudiante['nombre_dosest']	= $laRow['nombre_dosest'];
+				$laEstudiante['apellido_unoest']= $laRow['apellido_unoest'];
+				$laEstudiante['apellido_dosest']= $laRow['apellido_dosest'];
+				$laEstudiante['sexoest']= $laRow['sexoest'];
+				$laEstudiante['direccionest']	= $laRow['direccionest'];
+				$laEstudiante['telefono_movest']= $laRow['telefono_movest'];
+				$laEstudiante['telefono_habest']= $laRow['telefono_habest'];
+				$laEstudiante['correoest']		= $laRow['correoest'];
+				$laEstudiante['estatusest']		= $laRow['estatusest'];
+			}
+			$this->desconectar();
+			return $laEstudiante;
+		}
+
 		public function listar_estudiantes()
 		{
 			$laEstudiante = array();

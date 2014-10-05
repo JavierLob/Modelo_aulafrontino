@@ -9,6 +9,7 @@
             <div class="col-lg-6 span6">            
                 <label>Cédula <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Cédula estudiante."><i class="fa fa-question" ></i></span></label>
                 <input type="text" name="cedulaest" id="cam_cedulaest" required/>
+                <div class="status_per"></div>
             </div>
         </div>
         <div class="row-fluid">
@@ -66,3 +67,28 @@
         </div>
     </form>
 </div>
+
+<script>
+$("#cam_cedulaest").change(function() { 
+    var valor_consultar = $("#cam_cedulaest").val();
+    $("#status_per").html('<img src="../bootstrap/img/loader.gif" align="absmiddle">&nbsp;Analizando...');
+        $.ajax({  
+            type: "POST",  
+            url: "../controlador/control_estudiante.php",
+            data: {cedulaest:valor_consultar,operacion:"consultar_estudiante"},  
+            success: function(data){
+                if(data=='1')
+                {
+                    $("#status_per").hide();
+                    $("#btn_enviar").prop( "disabled", true );
+                    alert('Este estudiante ya está registrado en el sistema.');                              
+                }
+                else
+                {
+                    $("#btn_enviar").prop( "disabled", false );
+                    $("#status_per").hide();                             
+                }
+            }
+        });
+});
+</script>

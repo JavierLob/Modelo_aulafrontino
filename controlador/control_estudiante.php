@@ -30,7 +30,8 @@
 			{	
 				$_SESSION['msj']='Error en el registro';
 			}
-		break;
+			header('location: ../vista/intranet.php?vista=estudiante/estudiante');
+		break;	
 		case 'editar_estudiante':
 			$hecho=$lobjEstudiante->editar_estudiante();
 			if($hecho)
@@ -41,6 +42,7 @@
 			{	
 				$_SESSION['msj']='Error al modificar';
 			}
+			header('location: ../vista/intranet.php?vista=estudiante/estudiante');
 		break;
 		case 'desactivar_estudiante':
 			$hecho=$lobjEstudiante->desactivar_estudiante();
@@ -52,6 +54,7 @@
 			{	
 				$_SESSION['msj']='Error al eliminar';
 			}
+			header('location: ../vista/intranet.php?vista=estudiante/estudiante');
 		break;
 		case 'activar_estudiante':
 			$hecho=$lobjEstudiante->activar_estudiante();
@@ -63,11 +66,22 @@
 			{	
 				$_SESSION['msj']='Error al eliminar';
 			}
+			header('location: ../vista/intranet.php?vista=estudiante/estudiante');
+		break;
+		case 'consultar_estudiante':
+			$datos_consulta = $lobjEstudiante->consultar_estudiante_cedula();
+			if($datos_consulta['idestudiante']!='')
+			{
+				print('1');
+			}
+			else
+			{	
+				print('0');
+			}
 		break;
 		default:
 			header('location: ../vista/intranet.php?vista=estudiante/estudiante');
 		break;
 	}
 
-	header('location: ../vista/intranet.php?vista=estudiante/estudiante');
 ?>
