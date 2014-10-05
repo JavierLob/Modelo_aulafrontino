@@ -54,10 +54,10 @@ for($i=0;$i<count($laModulos);$i++)
         echo '<a class="btn btn-success" id="btn_registrar" href="?vista=curso/registrar_curso"><i class="icon-plus icon-white"></i> Registrar curso</a>';
     }
     ?>
-    <form action="../controlador/control_curso.php" method="POST" name="form_curso">
+    <form role="form" class="form" action="../controlador/control_curso.php" method="POST" name="form_curso">
         <input type="hidden" value="desactivar_curso" name="operacion" id="cam_operacion"/>
         <input type="hidden"  name="idcurso" id="cam_idcurso"/>
-        <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
+        <table class="cell-border compact hover stripe" id="filtro">
             <thead>
                 <th>Id</th><th>Nombre</th><th>Asignación</th><th>Sección</th><th>Profesor</th><th>Fecha de apertura</th><th>Fecha de cierre</th><th>Cupos disponibles</th><th>Cantidad de inscritos</th><?php if($consultar || $desactivar)
                         { echo '<th>Operación</th>';}?>
@@ -84,18 +84,18 @@ for($i=0;$i<count($laModulos);$i++)
                             echo '<td>';
                             if($consultar)
                             {
-                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$laCursos[$i]['idcurso'].')"><i class="icon-search icon-white"></i></a>';
+                                echo '<a class="btn-sm btn-info" href="#" onclick="buscar('.$laCursos[$i]['idcurso'].')"><i class="fa fa-search"></i></a>';
                             }
                             if($desactivar)
                             {
                                 if($laCursos[$i]['estatuscur']=='1')
                                 {
-                                    echo ' <a class="btn btn-danger" href="#" onclick="desactivar('.$laCursos[$i]['idcurso'].')" ><i class="icon-remove icon-white"></i></a>';
+                                    echo ' <a class="btn-sm btn-danger" href="#" onclick="desactivar('.$laCursos[$i]['idcurso'].')" ><i class="fa fa-remove"></i></a>';
 
                                 }
                                 elseif ($laCursos[$i]['estatuscur']=='0') 
                                 {
-                                    echo ' <a class="btn btn-warning" title="Restaurar" href="#" onclick="activar('.$laCursos[$i]['idcurso'].')" ><i class="icon-refresh icon-white"></i></a>';
+                                    echo ' <a class="btn-sm btn-warning" title="Restaurar" href="#" onclick="activar('.$laCursos[$i]['idcurso'].')" ><i class="fa fa-refresh"></i></a>';
                                 }
                             }
                             echo "</td>";

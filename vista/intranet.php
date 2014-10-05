@@ -75,6 +75,7 @@
     <!-- CSS -->
     <link href="../bootstrap-3/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bootstrap-3/css/style-intranet.css" rel="stylesheet">
+    <link href="../bootstrap-3/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
     <link href="../bootstrap-3/DataTables-1.10.2/media/css/jquery.dataTables.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,6 +83,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="../bootstrap-3/DataTables-1.10.2/media/js/jquery.js"></script>
   </head>
   <body>
     <!-- EMPIEZA: MENU SUPERIOR -->
@@ -146,10 +148,10 @@
     </div>
     <!-- FIN: CONTENEDOR -->
     <!-- jQuery (necesario para los plugins de bootstrap) -->
-    <script src="../bootstrap-3/DataTables-1.10.2/media/js/jquery.js"></script>
     <!-- Incluye todos los plugins después de esta línea -->
     <script src="../bootstrap-3/js/bootstrap.min.js"></script>
     <script type="text/javascript" language="javascript" src="../bootstrap-3/DataTables-1.10.2/media/js/jquery.dataTables.js"></script>
+    <script src="../bootstrap-3/datepicker/js/bootstrap-datepicker.js"></script>    
     <script type="text/javascript">
         $(document).ready(function() {
         $('#filtro').dataTable();
