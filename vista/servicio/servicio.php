@@ -47,7 +47,8 @@ for($i=0;$i<count($laModulos);$i++)
         echo '<a class="btn btn-success" id="btn_registrar" href="?vista=servicio/registrar_servicio"><i class="fa fa-plus"></i> Registrar servicio</a>';
     }
     ?>
-    <form action="../controlador/control_servicio.php" method="POST" name="form_servicio" role="form" class="form">
+    <!-- EMPIEZA: FORMULARIO -->
+    <form role="form" class="form" action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="eliminar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>
         <table class="cell-border compact hover stripe" id="filtro">
@@ -86,4 +87,4 @@ for($i=0;$i<count($laModulos);$i++)
                 </tbody>
         </table>
     </form>
-</div>
+    <!-- FIN: FORMULARIO -->

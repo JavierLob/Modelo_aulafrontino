@@ -4,6 +4,7 @@
         <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar un servicio en el sistema.
       </div>
     <!-- FIN: RECOMENDACION -->
+    <!-- EMPIEZA: FORMULARIO -->
     <form role="form" class="form" action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="registrar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>
@@ -68,3 +69,4 @@
           </div>
         </div>
     </form>
+    <!-- FIN: FORMULARIO -->
