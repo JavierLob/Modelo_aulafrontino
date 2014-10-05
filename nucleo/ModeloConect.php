@@ -75,5 +75,18 @@ class ModeloConect
 	     mysql_query("ROLLBACK",$this->con);
 	  }
 
+	  protected function formato_fecha($pcFecha)
+	  {
+	  	 $lcNow=date("Y-m-d");
+	  	 if (strlen($pcFecha)==10)
+	  	 {
+	  	 	$lcDia=substr($pcFecha,0,2);
+	  	 	$lcMes=substr($pcFecha,3,2);
+	  	 	$lcAno=substr($pcFecha,6,4);
+	  	 	$lcNow=$lcAno."-".$lcMes."-".$lcDia;
+	  	 }
+	  	 return $lcNow;
+	  }
+
 }
 ?>

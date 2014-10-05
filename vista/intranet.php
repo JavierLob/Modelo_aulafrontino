@@ -87,6 +87,7 @@
         </style>
         <link rel="stylesheet" href="../bootstrap/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="../bootstrap/css/main.css">
+        <link href="../bootstrap/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
         <link href="../libreria/css/datatable/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css" />
         <link href="../libreria/css/formularios.css" rel="stylesheet" type="text/css" />
         <script src="../bootstrap/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -109,6 +110,7 @@
                     });
                 } );
         </script>
+        <script src="../bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
         <script type="text/javascript">
             $(function () {
                 $("[data-toggle='popover']").popover();

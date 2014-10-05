@@ -92,6 +92,29 @@
 			return $Fila;
 		}
 
+		function listar_asignaturas_activas()
+		{
+			$this->conectar();
+			$cont=0;
+			$sql="SELECT * FROM tasignatura WHERE estatusasi='1'";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]['idasignatura']=$laRow['idasignatura'];
+				$Fila[$cont]['codigoasi']=$laRow['codigoasi'];
+				$Fila[$cont]['nombreasi']=$laRow['nombreasi'];
+				$Fila[$cont]['descripcionasi']=$laRow['descripcionasi'];
+				$Fila[$cont]['anoasi']=$laRow['anoasi'];
+				$Fila[$cont]['unidad_creditoasi']=$laRow['unidad_creditoasi'];
+				$Fila[$cont]['observacionasi']=$laRow['observacionasi'];
+				$Fila[$cont]['horas_duracionasi']=$laRow['horas_duracionasi'];
+				$Fila[$cont]['estatusasi']=$laRow['estatusasi'];
+				$cont++;
+			}
+			$this->desconectar();
+			return $Fila;
+		}
+
 		
 		function consultar_asignatura()
 		{
@@ -155,6 +178,27 @@
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
+		}
+
+		//ESTA FUNCIÓN DEBE PERTENECER A LA CLASE EL PROFESOR, TRASLADAR UNA VEZ SE HAGA LA CLASE PROFESOR
+		
+		function listar_profesores_activos()
+		{
+			$this->conectar();
+			$cont=0;
+			$sql="SELECT * FROM tprofesor WHERE estatuspro='1'";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]['idprofesor']=$laRow['idprofesor'];
+				$Fila[$cont]['cedulapro']=$laRow['cedulapro'];
+				$Fila[$cont]['nombre_unopro']=$laRow['nombre_unopro'];
+				$Fila[$cont]['apellido_unopro']=$laRow['apellido_unopro'];
+				$Fila[$cont]['estatuspro']=$laRow['estatuspro'];
+				$cont++;
+			}
+			$this->desconectar();
+			return $Fila;
 		}
 
 		

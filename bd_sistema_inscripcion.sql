@@ -1,124 +1,58 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+-- phpMyAdmin SQL Dump
+-- version 4.0.4
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 05-10-2014 a las 04:17:57
+-- Versión del servidor: 5.6.12-log
+-- Versión de PHP: 5.4.16
 
-CREATE SCHEMA IF NOT EXISTS `bd_sistema_inscripcion` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci ;
-USE `bd_sistema_inscripcion` ;
-
--- -----------------------------------------------------
--- Table `bd_sistema_inscripcion`.`tprofesor`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_sistema_inscripcion`.`tprofesor` (
-  `idprofesor` INT NOT NULL AUTO_INCREMENT,
-  `cedulapro` CHAR(9) NOT NULL,
-  `nombre_unopro` VARCHAR(55) NOT NULL,
-  `nombre_dospro` VARCHAR(55) NULL,
-  `apellido_unopro` VARCHAR(60) NOT NULL,
-  `apellido_dospro` VARCHAR(60) NULL,
-  `direccionpro` VARCHAR(250) NOT NULL,
-  `telefono_movpro` CHAR(11) NULL,
-  `telefono_habpro` CHAR(11) NOT NULL,
-  `correopro` VARCHAR(60) NOT NULL,
-  `profesionpro` VARCHAR(100) NOT NULL,
-  `estatuspro` TINYINT(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`idprofesor`))
-ENGINE = InnoDB;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
--- -----------------------------------------------------
--- Table `bd_sistema_inscripcion`.`testudiante`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_sistema_inscripcion`.`testudiante` (
-  `idestudiante` INT NOT NULL AUTO_INCREMENT,
-  `cedulaest` CHAR(9) NOT NULL,
-  `nombre_unoest` VARCHAR(55) NOT NULL,
-  `nombre_dosest` VARCHAR(55) NULL,
-  `apellido_unoest` VARCHAR(60) NOT NULL,
-  `apellido_dosest` VARCHAR(60) NULL,
-  `direccionest` VARCHAR(250) NOT NULL,
-  `telefono_movest` CHAR(11) NULL,
-  `telefono_habest` CHAR(11) NOT NULL,
-  `correoest` VARCHAR(60) NOT NULL,
-  `estatusest` TINYINT(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`idestudiante`))
-ENGINE = InnoDB;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
+--
+-- Base de datos: `bd_sistema_inscripcion`
+--
+CREATE DATABASE IF NOT EXISTS `bd_sistema_inscripcion` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
+USE `bd_sistema_inscripcion`;
 
--- -----------------------------------------------------
--- Table `bd_sistema_inscripcion`.`tasignatura`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_sistema_inscripcion`.`tasignatura` (
-  `idasignatura` INT NOT NULL AUTO_INCREMENT,
-  `codigoasi` CHAR(10) NOT NULL,
-  `nombreasi` VARCHAR(80) NOT NULL,
-  `descripcionasi` TEXT NOT NULL,
-  `anoasi` CHAR(10) NOT NULL,
-  `unidad_creditoasi` INT NOT NULL,
-  `observacionasi` TEXT NULL,
-  `horas_duracionasi` INT NOT NULL,
-  `estatusasi` TINYINT(1) NOT NULL DEFAULT 1,
-  `tasignaturacol` VARCHAR(45) NULL,
-  PRIMARY KEY (`idasignatura`))
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `tasignatura`
+--
 
--- -----------------------------------------------------
--- Table `bd_sistema_inscripcion`.`tcurso`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_sistema_inscripcion`.`tcurso` (
-  `idcurso` INT NOT NULL,
-  `nombrecur` VARCHAR(60) NOT NULL,
-  `seccioncur` CHAR(15) NOT NULL,
-  `fecha_aperturacur` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `fecha_cierrecur` timestamp NULL,
-  `cupos_disponiblecur` INT NOT NULL,
-  `cant_inscritoscur` INT NOT NULL,
-  `idasignatura` INT NOT NULL,
-  `idprofesor` INT NOT NULL,
-  `estatuscur` TINYINT(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`idcurso`),
-  INDEX `fk_tcurso_idprofesor_idx` (`idprofesor` ASC),
-  INDEX `fk_tcurso_idasignatura_idx` (`idasignatura` ASC),
-  CONSTRAINT `fk_tcurso_idprofesor`
-    FOREIGN KEY (`idprofesor`)
-    REFERENCES `bd_sistema_inscripcion`.`tprofesor` (`idprofesor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tcurso_idasignatura`
-    FOREIGN KEY (`idasignatura`)
-    REFERENCES `bd_sistema_inscripcion`.`tasignatura` (`idasignatura`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `tasignatura` (
+  `idasignatura` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoasi` char(10) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombreasi` varchar(80) COLLATE utf8_spanish2_ci NOT NULL,
+  `descripcionasi` text COLLATE utf8_spanish2_ci NOT NULL,
+  `anoasi` char(10) COLLATE utf8_spanish2_ci NOT NULL,
+  `unidad_creditoasi` int(11) NOT NULL,
+  `observacionasi` text COLLATE utf8_spanish2_ci,
+  `horas_duracionasi` int(11) NOT NULL,
+  `estatusasi` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idasignatura`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
 
+--
+-- Volcado de datos para la tabla `tasignatura`
+--
 
--- -----------------------------------------------------
--- Table `bd_sistema_inscripcion`.`tinscripcion`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_sistema_inscripcion`.`tinscripcion` (
-  `idinscripcion` INT NOT NULL AUTO_INCREMENT,
-  `idestudiante` INT NOT NULL,
-  `idcurso` INT NOT NULL,
-  `fecha_inscripcion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `estatus` TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`idinscripcion`),
-  INDEX `fk_tinscripcion_idestudiante_idx` (`idestudiante` ASC),
-  INDEX `fk_tinscripcion_idcurso_idx` (`idcurso` ASC),
-  CONSTRAINT `fk_tinscripcion_idestudiante`
-    FOREIGN KEY (`idestudiante`)
-    REFERENCES `bd_sistema_inscripcion`.`testudiante` (`idestudiante`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_tinscripcion_idcurso`
-    FOREIGN KEY (`idcurso`)
-    REFERENCES `bd_sistema_inscripcion`.`tcurso` (`idcurso`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
+INSERT INTO `tasignatura` (`idasignatura`, `codigoasi`, `nombreasi`, `descripcionasi`, `anoasi`, `unidad_creditoasi`, `observacionasi`, `horas_duracionasi`, `estatusasi`) VALUES
+(1, 'Ma01', 'Matematica I', 'EstadÃ­sticas y probabilidades', '3', 3, '', 4, 1),
+(2, 'Pr-01', 'ProgramaciÃ³n I', 'Algoritmica y programaciÃ³n bÃ¡sica', '1', 2, '\r\n          ', 3, 1);
 
+-- --------------------------------------------------------
 
--- 
--- Tablas de el modelo de seguridad
+--
+-- Estructura de tabla para la tabla `tbitacora`
 --
 
 CREATE TABLE IF NOT EXISTS `tbitacora` (
@@ -133,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `tbitacora` (
   `accesobit` tinyint(1) NOT NULL,
   PRIMARY KEY (`idtbitacora`),
   KEY `fk_tbitacora_tusuario1_idx` (`tusuario_idtusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=163 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=336 ;
 
 --
 -- Volcado de datos para la tabla `tbitacora`
@@ -300,7 +234,248 @@ INSERT INTO `tbitacora` (`idtbitacora`, `direccionbit`, `fechabit`, `ipbit`, `op
 (159, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-04 10:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
 (160, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-04 10:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
 (161, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-04 10:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
-(162, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-04 10:10:00', '127.0.0.1', '', '', '', 'Administrador', 1);
+(162, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-04 10:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(163, '/modelo_aulafrontino/vista/intranet.php', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(164, '/modelo_aulafrontino/vista/intranet.php', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(166, '/modelo_aulafrontino/vista/intranet.php', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(167, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/modulo', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(168, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/registrar_modulo', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(169, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/modulo', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(170, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/consultar_modulo&id=1', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(171, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/modulo', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(172, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(173, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(174, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(175, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(176, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(177, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(178, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(179, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(180, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(181, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignacion', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(182, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_modulo', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(183, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_modulo&id=1', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(184, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(185, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(186, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(187, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(188, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(189, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(190, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(191, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(192, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(193, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(194, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(195, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 12:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(196, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(197, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(198, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/consultar_servicio&id=20', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(199, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(200, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(201, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(202, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(203, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(204, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(205, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(206, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(207, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(208, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(209, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(210, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(211, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(212, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(213, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(214, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(215, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(216, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(217, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(218, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(219, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=1', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(220, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(221, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(222, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=1', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(223, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(224, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=1', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(225, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(226, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(227, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=1', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(228, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(229, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=1', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(230, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=1', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(231, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(232, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(233, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(234, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(235, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(236, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(237, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=1', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(238, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(239, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 01:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(240, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/registrar_asignatura', '2014-10-05 02:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(241, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 02:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(242, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 02:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(243, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 02:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(244, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/consultar_asignatura&id=2', '2014-10-05 02:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(245, '/modelo_aulafrontino/vista/intranet.php?vista=asignatura/asignatura', '2014-10-05 02:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(246, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/modulo', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(247, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/registrar_modulo', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(248, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/modulo', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(249, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(250, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(251, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(252, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(253, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(254, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(255, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(256, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(257, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(258, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignacion', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(259, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_modulo', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(260, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_modulo&id=1', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(261, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(262, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(263, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(264, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(265, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(266, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(267, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(268, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(269, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(270, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(271, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(272, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(273, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(274, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(275, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(276, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(277, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(278, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(279, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(280, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(281, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(282, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(283, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(284, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(285, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(286, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(287, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(288, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(289, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(290, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(291, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(292, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(293, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(294, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(295, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(296, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(297, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(298, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(299, '/modelo_aulafrontino/vista/intranet.php?vista=curso/registrar_curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(300, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 03:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(301, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(302, '/modelo_aulafrontino/vista/intranet.php?vista=curso/consultar_curso&id=2', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(303, '/modelo_aulafrontino/vista/intranet.php?vista=curso/consultar_curso&id=2', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(304, '/modelo_aulafrontino/vista/intranet.php?vista=curso/consultar_curso&id=2', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(305, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(306, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(307, '/modelo_aulafrontino/vista/intranet.php?vista=curso/consultar_curso&id=2', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(308, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(309, '/modelo_aulafrontino/vista/intranet.php?vista=curso/consultar_curso&id=2', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(310, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(311, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(312, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(313, '/modelo_aulafrontino/vista/intranet.php?vista=curso/curso', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(314, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(315, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/modulo', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(316, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/registrar_modulo', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(317, '/modelo_aulafrontino/vista/intranet.php?vista=modulo/modulo', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(318, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(319, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(320, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(321, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(322, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(323, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(324, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(325, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/registrar_servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(326, '/modelo_aulafrontino/vista/intranet.php?vista=servicio/servicio', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(327, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignacion', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(328, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_modulo', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(329, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_modulo&id=1', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(330, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(331, '/modelo_aulafrontino/vista/intranet.php?vista=rol/asignar_servicio&id=1', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(332, '/modelo_aulafrontino/vista/intranet.php?vista=estudiante/estudiante', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(333, '/modelo_aulafrontino/vista/intranet.php?vista=estudiante/registrar_estudiante', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(334, '/modelo_aulafrontino/vista/intranet.php', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1),
+(335, '/modelo_aulafrontino/vista/intranet.php?vista=estudiante/estudiante', '2014-10-05 04:10:00', '127.0.0.1', '', '', '', 'Administrador', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tcurso`
+--
+
+CREATE TABLE IF NOT EXISTS `tcurso` (
+  `idcurso` int(11) NOT NULL AUTO_INCREMENT,
+  `nombrecur` varchar(60) COLLATE utf8_spanish2_ci NOT NULL,
+  `seccioncur` char(15) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha_aperturacur` date NOT NULL,
+  `fecha_cierrecur` date DEFAULT NULL,
+  `cupos_disponiblecur` int(11) NOT NULL,
+  `cant_inscritoscur` int(11) NOT NULL,
+  `idasignatura` int(11) NOT NULL,
+  `idprofesor` int(11) NOT NULL,
+  `estatuscur` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idcurso`),
+  KEY `fk_tcurso_idprofesor_idx` (`idprofesor`),
+  KEY `fk_tcurso_idasignatura_idx` (`idasignatura`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `tcurso`
+--
+
+INSERT INTO `tcurso` (`idcurso`, `nombrecur`, `seccioncur`, `fecha_aperturacur`, `fecha_cierrecur`, `cupos_disponiblecur`, `cant_inscritoscur`, `idasignatura`, `idprofesor`, `estatuscur`) VALUES
+(1, 'ProgramaciÃ³n', '133', '2014-10-04', '2014-12-04', 23, 0, 2, 1, 1),
+(2, 'Matematica', '133', '2014-10-05', '2014-12-05', 27, 0, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `testudiante`
+--
+
+CREATE TABLE IF NOT EXISTS `testudiante` (
+  `idestudiante` int(11) NOT NULL AUTO_INCREMENT,
+  `cedulaest` char(9) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombre_unoest` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombre_dosest` varchar(55) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `apellido_unoest` varchar(60) COLLATE utf8_spanish2_ci NOT NULL,
+  `apellido_dosest` varchar(60) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `sexoest` char(1) COLLATE utf8_spanish2_ci NOT NULL,
+  `direccionest` varchar(250) COLLATE utf8_spanish2_ci NOT NULL,
+  `telefono_movest` char(11) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `telefono_habest` char(11) COLLATE utf8_spanish2_ci NOT NULL,
+  `correoest` varchar(60) COLLATE utf8_spanish2_ci NOT NULL,
+  `estatusest` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idestudiante`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tinscripcion`
+--
+
+CREATE TABLE IF NOT EXISTS `tinscripcion` (
+  `idinscripcion` int(11) NOT NULL AUTO_INCREMENT,
+  `idestudiante` int(11) NOT NULL,
+  `idcurso` int(11) NOT NULL,
+  `fecha_inscripcion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `estatus` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idinscripcion`),
+  KEY `fk_tinscripcion_idestudiante_idx` (`idestudiante`),
+  KEY `fk_tinscripcion_idcurso_idx` (`idcurso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -312,16 +487,18 @@ CREATE TABLE IF NOT EXISTS `tmodulo` (
   `idtmodulo` int(11) NOT NULL AUTO_INCREMENT,
   `nombremod` varchar(45) NOT NULL,
   PRIMARY KEY (`idtmodulo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `tmodulo`
 --
 
 INSERT INTO `tmodulo` (`idtmodulo`, `nombremod`) VALUES
-(1, 'MÃ³dulo'),
+(1, 'Asignatura'),
 (2, 'Servicio'),
-(3, 'Seguridad');
+(3, 'Seguridad'),
+(4, 'Curso'),
+(5, 'Estudiante');
 
 -- --------------------------------------------------------
 
@@ -350,6 +527,36 @@ INSERT INTO `tpersona` (`idtpersona`, `nombreunoper`, `nombredosper`, `apellidou
 ('1241244', 'Juan', NULL, 'Perez', NULL, '1979-02-23', 'Araure', '0255482934', 'juan.perez@gmail.com'),
 ('19214122', 'Jesus', NULL, 'Torres', NULL, '1990-08-03', 'Acarigua', '02557283342', 'jesus.torres@gmail.com'),
 ('9185471', 'Miguel', NULL, 'Hernandez', NULL, '1990-08-09', 'Acarigua', '02556723493', 'miguel@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tprofesor`
+--
+
+CREATE TABLE IF NOT EXISTS `tprofesor` (
+  `idprofesor` int(11) NOT NULL AUTO_INCREMENT,
+  `cedulapro` char(9) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombre_unopro` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombre_dospro` varchar(55) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `apellido_unopro` varchar(60) COLLATE utf8_spanish2_ci NOT NULL,
+  `apellido_dospro` varchar(60) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `sexopro` char(1) COLLATE utf8_spanish2_ci NOT NULL,
+  `direccionpro` varchar(250) COLLATE utf8_spanish2_ci NOT NULL,
+  `telefono_movpro` char(11) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `telefono_habpro` char(11) COLLATE utf8_spanish2_ci NOT NULL,
+  `correopro` varchar(60) COLLATE utf8_spanish2_ci NOT NULL,
+  `profesionpro` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `estatuspro` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idprofesor`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `tprofesor`
+--
+
+INSERT INTO `tprofesor` (`idprofesor`, `cedulapro`, `nombre_unopro`, `nombre_dospro`, `apellido_unopro`, `apellido_dospro`, `sexopro`, `direccionpro`, `telefono_movpro`, `telefono_habpro`, `correopro`, `profesionpro`, `estatuspro`) VALUES
+(1, '19768654', 'Luis', 'Javier', 'Bracho', 'Piña', 'M', 'La tapa', '04262354567', '', 'ljbracho@gmail.com', 'Ingeniero Informático', 1);
 
 -- --------------------------------------------------------
 
@@ -392,7 +599,10 @@ CREATE TABLE IF NOT EXISTS `trol_has_tmodulo` (
 --
 
 INSERT INTO `trol_has_tmodulo` (`trol_idtrol`, `tmodulo_idtmodulo`) VALUES
+(1, 1),
 (1, 3),
+(1, 4),
+(1, 5),
 (2, 1),
 (3, 1),
 (3, 3),
@@ -431,6 +641,18 @@ INSERT INTO `trol_has_tservicio` (`trol_idtrol`, `tservicio_idtservicio`) VALUES
 (1, 14),
 (1, 15),
 (1, 16),
+(1, 17),
+(1, 18),
+(1, 19),
+(1, 20),
+(1, 21),
+(1, 22),
+(1, 23),
+(1, 24),
+(1, 25),
+(1, 26),
+(1, 27),
+(1, 28),
 (2, 1),
 (2, 11),
 (3, 1),
@@ -452,7 +674,7 @@ CREATE TABLE IF NOT EXISTS `tservicio` (
   `tmodulo_idtmodulo` int(11) NOT NULL,
   PRIMARY KEY (`idtservicio`),
   KEY `fk_tservicio_tmodulo1_idx` (`tmodulo_idtmodulo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Volcado de datos para la tabla `tservicio`
@@ -471,7 +693,19 @@ INSERT INTO `tservicio` (`idtservicio`, `nombreser`, `enlaceser`, `visibleser`, 
 (13, 'Consultar mÃ³dulo', 'modulo/consultar_modulo', '0', 3),
 (14, 'Consultar servicio', 'servicio/consultar_servicio', '0', 3),
 (15, 'Consultar rol', 'rol/consultar_rol', '0', 3),
-(16, 'Eliminar servicio', 'servicio/eliminar_servicio', '0', 3);
+(16, 'Eliminar servicio', 'servicio/eliminar_servicio', '0', 3),
+(17, 'Asignatura', 'asignatura/asignatura', '1', 1),
+(18, 'Registrar asignatura', 'asignatura/registrar_asignatura', '0', 1),
+(19, 'Consultar asignatura', 'asignatura/consultar_asignatura', '0', 1),
+(20, 'Desactivar asignatura', 'asignatura/desactivar_asignatura', '0', 1),
+(21, 'Curso', 'curso/curso', '1', 4),
+(22, 'Registrar Curso', 'curso/registrar_curso', '0', 4),
+(23, 'Consultar curso', 'curso/consultar_curso', '0', 4),
+(24, 'Desactivar curso', 'curso/desactivar_curso', '0', 4),
+(25, 'Estudiante', 'estudiante/estudiante', '1', 5),
+(26, 'Registrar Estudiante', 'estudiante/registrar_estudiante', '0', 5),
+(27, 'Consultar estudiante', 'estudiante/consultar_estudiante', '0', 5),
+(28, 'Desactivar estudiante', 'estudiante/desactivar_estudiante', '0', 5);
 
 -- --------------------------------------------------------
 
@@ -509,6 +743,20 @@ ALTER TABLE `tbitacora`
   ADD CONSTRAINT `fk_tbitacora_tusuario1` FOREIGN KEY (`tusuario_idtusuario`) REFERENCES `tusuario` (`idtusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `tcurso`
+--
+ALTER TABLE `tcurso`
+  ADD CONSTRAINT `fk_tcurso_idasignatura` FOREIGN KEY (`idasignatura`) REFERENCES `tasignatura` (`idasignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tcurso_idprofesor` FOREIGN KEY (`idprofesor`) REFERENCES `tprofesor` (`idprofesor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tinscripcion`
+--
+ALTER TABLE `tinscripcion`
+  ADD CONSTRAINT `tinscripcion_ibfk_1` FOREIGN KEY (`idcurso`) REFERENCES `tcurso` (`idcurso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_tinscripcion_idestudiante` FOREIGN KEY (`idestudiante`) REFERENCES `testudiante` (`idestudiante`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `trol_has_tmodulo`
 --
 ALTER TABLE `trol_has_tmodulo`
@@ -535,7 +783,6 @@ ALTER TABLE `tusuario`
   ADD CONSTRAINT `fk_tusuario_tpersona1` FOREIGN KEY (`tpersona_idtpersona`) REFERENCES `tpersona` (`idtpersona`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tusuario_trol1` FOREIGN KEY (`trol_idtrol`) REFERENCES `trol` (`idtrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
