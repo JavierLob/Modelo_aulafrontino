@@ -1,36 +1,39 @@
-<div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Asignar servicio</h3>
-    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras asignar los servicios al rol que seleccione.</div>
-    <form class="formulario" action="../controlador/control_rol.php" method="POST" name="form_servicio">
-        <input type="hidden" value="asignar_servicio" name="operacion" />
-        <div class="row-fluid">
-            <div class="col-lg-6 span6">
-                <label><h5>Rol <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Rol al cual se le asignarán los servicios de los módulos que tiene asignado."><i class="fa fa-question" ></i></span></h5> </label>
-                <select name="idrol" id="cam_idrol" onchange="buscar_modulo(this.value);" required>
+<h1 class="page-header">Asignar servicio</h1>
+<!-- EMPIEZA: RECOMENDACION -->
+<div class="alert alert-info" role="alert">
+    <strong><i class="fa fa-info-circle"></i></strong> Aquí podras asignar los servicios al rol que seleccione.
+</div>
+<form class="form" role="form" action="../controlador/control_rol.php" method="POST" name="form_servicio">
+    <input type="hidden" value="asignar_servicio" name="operacion" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="cam_codigoasi">Rol <strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Rol al cual se le asignarán los servicios de los módulos que tiene asignado."></i></strong></label>
+                <select name="idrol" id="cam_idrol" class="form-control" onchange="buscar_modulo(this.value);" required>
                     <option value="">Seleccione un rol</option>
                     <?php
-                    require_once('../clases/clase_rol.php');
-                    $lobjRol=new clsrol;
-                    $laroles=$lobjRol->consultar_roles();
-                    for($i=0;$i<count($laroles);$i++)
-                    {
-                        if($laroles[$i][0]==$_GET['id'])
+                        require_once('../clases/clase_rol.php');
+                        $lobjRol=new clsrol;
+                        $laroles=$lobjRol->consultar_roles();
+                        for($i=0;$i<count($laroles);$i++)
                         {
-                            echo '<option value="'.$laroles[$i][0].'" selected>'.$laroles[$i][1].'</option>';
+                            if($laroles[$i][0]==$_GET['id'])
+                            {
+                                echo '<option value="'.$laroles[$i][0].'" selected>'.$laroles[$i][1].'</option>';
+                            }
+                            else
+                            {
+                                echo '<option value="'.$laroles[$i][0].'">'.$laroles[$i][1].'</option>';
+                            }
                         }
-                        else
-                        {
-                            echo '<option value="'.$laroles[$i][0].'">'.$laroles[$i][1].'</option>';
-                        }
-                    }
                     ?>
                 </select>
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="col-lg-12 span12">
-
-        <h5>Servicios</h5>
+    </div>
+    <div class="row">
+        <div class="col-lm-12">
+            <h3>Servicios</h3>
             <?php
                 $lobjRol->set_Rol($_GET['id']);
                 $laModulos=$lobjRol->consultar_modulos();
@@ -39,11 +42,11 @@
                     require_once('../clases/clase_servicio.php');
                     $lobjServicio=new clsServicio;
                     $laServicios=$lobjServicio->consultar_servicios_modulo($laModulos[$i][0]);
-                    echo '<div class="col-lg-5 span5 pull-left">';                  
+                    echo '<div class="col-md-6">';                  
                         echo '<h5>'.$laModulos[$i][1].'</h5>';
                         if($laServicios)
                         {
-                            echo '<div class="checkbox">';
+                            echo '<div class="col-md-12">';
                                 $laServicios_Rol=$lobjRol->consultar_servicios($laModulos[$i][0]);
                                 for($j=0;$j<count($laServicios);$j++)
                                 {                        
@@ -56,9 +59,9 @@
                                            break;
                                         }
                                     }
-                                    echo '<label>
+                                    echo '<div class="form-group"><label>
                                             <input type="checkbox" name="idservicio[]" value="'.$laServicios[$j][0].'" '.$cheked.'>'.$laServicios[$j][1].'
-                                          </label>';
+                                            </label></div>';
                                 }
                             echo '</div>';
                         }
@@ -71,12 +74,15 @@
             ?>
         </div>
     </div>
-        <div class="botonera" >
-            <input type="submit" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="ACEPTAR">
-            <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="REGRESAR" onclick="window.location.href='?vista=rol/asignar_modulo';">
-        </div>
-    </form>
-</div>
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-danger center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=rol/asignar_modulo';"><i class="fa fa-chevron-left"></i> Regresar</button>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check" ></i> Aceptar</button>
+      </div>
+  </div>
+</form>
 <script type="text/javascript">
     function buscar_modulo(idrol)
     {
