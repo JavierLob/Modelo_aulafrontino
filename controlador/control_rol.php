@@ -48,6 +48,30 @@
 			}
 			header('location: ../vista/intranet.php?vista=rol/rol');
 		break;
+		case 'desactivar_rol':
+			$hecho=$lobjRol->eliminar_rol();
+			if($hecho)
+			{
+				$_SESSION['msj']='Se ha desactivado exitosamente';
+			}
+			else
+			{	
+				$_SESSION['msj']='Error al desactivar';
+			}
+			header('location: ../vista/intranet.php?vista=rol/rol');
+		break;
+		case 'activar_rol':
+			$hecho=$lobjRol->activar_rol();
+			if($hecho)
+			{
+				$_SESSION['msj']='Se ha activado exitosamente';
+			}
+			else
+			{	
+				$_SESSION['msj']='Error al activar';
+			}
+			header('location: ../vista/intranet.php?vista=rol/rol');
+		break;
 		case 'asignar_modulo':
 			$hecho=$lobjRol->asignar_modulo();
 			if($hecho)

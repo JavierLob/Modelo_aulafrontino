@@ -26,28 +26,40 @@ for($i=0;$i<count($laModulos);$i++)
  {
     window.location.href="?vista=rol/consultar_rol&id="+id;
  }
-  function eliminar(id)
-  {
-     if(confirm("¿Esta seguro que desea eliminar el módulo seleccionado?"))
+function eliminar(id)
+{
+    if(confirm("¿Esta seguro que desea desactivar el rol seleccionado?"))
     {
-      document.getElementById("cam_idrol").value=id;
-      document.form_rol.submit();
+        document.getElementById("cam_idrol").value=id;
+        document.form_rol.submit();
     }
-  }
+}
+function activar(id)
+{
+    if(confirm("¿Desea activar el rol selecionado?"))
+    {
+        document.getElementById("cam_idrol").value=id;
+        document.getElementById("cam_operacion").value='activar_rol';
+        document.form_estudiante.submit();
+    }
+}
 </script>    
-<div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Roles</h3>
-    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras registrar, cosultar, modificar y eliminar los roles del sistema.</div>
-        <?php
+<h1 class="page-header">Roles</h1>
+    <!-- EMPIEZA: RECOMENDACION -->
+          <div class="alert alert-info" role="alert">
+            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y eliminar los roles del sistema.
+          </div>
+    <!-- FIN: RECOMENDACION -->
+    <?php
     if($registrar)
     {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=rol/registrar_rol"><i class="icon-plus icon-white"></i> Registrar rol</a>';
+        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=rol/registrar_rol"><i class="fa fa-plus"></i> Registrar rol</a>';
     }
     ?>
-    <form action="../controlador/control_rol.php" method="POST" name="form_rol">
-        <input type="hidden" value="eliminar_rol" name="operacion" />
+    <form action="../controlador/control_rol.php" method="POST" name="form_rol" role="form" class="form">
+        <input type="hidden" value="desactivar_rol" name="operacion" />
         <input type="hidden"  name="idrol" id="cam_idrol"/>
-        <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
+        <table class="cell-border compact hover stripe" id="filtro">
             <thead>
                 <th>Codigo</th><th>Nombre</th><?php if($consultar || $eliminar)
                         { echo '<th>Operación</th>';}?>
@@ -67,19 +79,17 @@ for($i=0;$i<count($laModulos);$i++)
                             echo '<td>';
                             if($consultar)
                             {
-                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$larols[$i][0].')"><i class="icon-search icon-white"></i></a>';
+                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$larols[$i][0].')"><i class="fa fa-search"></i></a>';
                             }
                             if($eliminar)
                             {
-                                echo ' <a class="btn btn-danger" href="#" onclick="eliminar('.$larols[$i][0].')" ><i class="icon-remove icon-white"></i></a>';
+                                echo ' <a class="btn btn-danger" href="#" onclick="eliminar('.$larols[$i][0].')" ><i class="fa fa-remove"></i></a>';
                             }
                             echo "</td>";                            
                         }
                         echo '</tr>';
                     }
                 ?>
-                </tbody>
+            </tbody>
         </table>
     </form>
-   
-</div>
