@@ -12,6 +12,19 @@
 		private $lnHoras;
 		private $llEstatus;
 
+		public function __construct() 
+		{
+	        $this->lnIdAsignatura = 0;
+	        $this->lcCodigo = '';
+	        $this->lcNombre = '';
+	        $this->lcDescripcion = '';
+	        $this->lnAno = 0;
+	        $this->lnUnidad = 0;
+	        $this->lcObservacion = '';
+	        $this->lnHoras = 0;
+	        $this->llEstatus = true;
+    	}
+
 		function set_Asignatura($pnIdAsignatura)
 		{
 			$this->lnIdAsignatura=$pnIdAsignatura;
@@ -105,7 +118,9 @@
 		function registrar_asignatura()
 		{
 			$this->conectar();
-			$sql="INSERT INTO tasignatura (codigoasi,nombreasi,descripcionasi,anoasi,unidad_creditoasi,observacionasi,horas_duracionasi,estatusasi)VALUES('$this->lcCodigo','$this->lcNombre','$this->lcDescripcion','$this->lnAno','$this->lnUnidad','$this->lcObservacion','$this->lnHoras','1')";
+			$sql="INSERT INTO tasignatura (codigoasi,nombreasi,descripcionasi,anoasi,unidad_creditoasi,observacionasi,horas_duracionasi,estatusasi)
+				VALUES
+				('$this->lcCodigo','$this->lcNombre','$this->lcDescripcion','$this->lnAno','$this->lnUnidad','$this->lcObservacion','$this->lnHoras','1')";
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
@@ -132,8 +147,11 @@
 		function editar_asignatura()
 		{
 			$this->conectar();
-			$sql="UPDATE tasignatura SET codigoasi='$this->lcCodigo',nombreasi='$this->lcNombre',descripcionasi='$this->lcDescripcion',anoasi='$this->lnAno',unidad_creditoasi='$this->lnUnidad',observacionasi='$this->lcObservacion',horas_duracionasi='$this->lnHoras' WHERE idasignatura='$this->lnIdAsignatura' ";
-			echo $sql;
+			$sql="UPDATE tasignatura SET 
+					codigoasi='$this->lcCodigo',nombreasi='$this->lcNombre',descripcionasi='$this->lcDescripcion',
+					anoasi='$this->lnAno',unidad_creditoasi='$this->lnUnidad',observacionasi='$this->lcObservacion
+					',horas_duracionasi='$this->lnHoras' 
+					WHERE idasignatura='$this->lnIdAsignatura' ";
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
