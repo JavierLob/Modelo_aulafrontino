@@ -147,7 +147,7 @@
 			$laEstudiante = array();
 			$cont = 0;
 			$this->conectar();
-			$sql = "SELECT * FROM testudiante;";
+			$sql = "SELECT * FROM testudiante ORDER BY apellido_unoest, apellido_dosest, nombre_unoest, nombre_dosest ASC;";
 			$pcsql = $this->filtro($sql);
 			while($laRow = $this->proximo($pcsql))
 			{
