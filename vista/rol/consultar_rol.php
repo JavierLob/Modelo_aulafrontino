@@ -13,7 +13,8 @@
     <strong><i class="fa fa-info-circle"></i></strong> Aquí podras ver y modificar el rol que consultaste.
   </div>
 <!-- FIN: RECOMENDACION -->
-<form class="formulario" action="../controlador/control_rol.php" method="POST" name="form_rol">
+<!-- EMPIEZA: FORMULARIO -->
+<form role="form" class="form" action="../controlador/control_rol.php" method="POST" name="form_rol">
     <input type="hidden" value="editar_rol" name="operacion" />
     <input type="hidden"  name="idrol" id="cam_idrol" value="<?php echo $larol[0];?>"/>
     <div class="row">
@@ -33,3 +34,4 @@
         </div>
     </div>
 </form>
+<!-- FIN: FORMULARIO -->

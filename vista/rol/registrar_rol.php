@@ -4,7 +4,8 @@
     <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar un rol en el sistema.
   </div>
 <!-- FIN: RECOMENDACION -->
-<form class="formulario" action="../controlador/control_rol.php" method="POST" name="form_rol">
+<!-- EMPIEZA: FORMULARIO -->
+<form role="form" class="form" action="../controlador/control_rol.php" method="POST" name="form_rol">
     <input type="hidden" value="registrar_rol" name="operacion" />
     <input type="hidden"  name="idrol" id="cam_idrol"/>
     <div class="row">
@@ -24,3 +25,4 @@
         </div>
     </div>
 </form>
+<!-- FIN: FORMULARIO -->

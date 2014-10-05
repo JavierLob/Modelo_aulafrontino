@@ -45,51 +45,53 @@ function activar(id)
 }
 </script>    
 <h1 class="page-header">Roles</h1>
-    <!-- EMPIEZA: RECOMENDACION -->
-          <div class="alert alert-info" role="alert">
-            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y eliminar los roles del sistema.
-          </div>
-    <!-- FIN: RECOMENDACION -->
-    <?php
-    if($registrar)
-    {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=rol/registrar_rol"><i class="fa fa-plus"></i> Registrar rol</a>';
-    }
-    ?>
-    <form action="../controlador/control_rol.php" method="POST" name="form_rol" role="form" class="form">
-        <input type="hidden" value="desactivar_rol" name="operacion" />
-        <input type="hidden"  name="idrol" id="cam_idrol"/>
-        <table class="cell-border compact hover stripe" id="filtro">
-            <thead>
-                <th>Codigo</th><th>Nombre</th><?php if($consultar || $eliminar)
-                        { echo '<th>Operación</th>';}?>
-            </thead>
-            <tbody>
-            <?php
-                    require_once('../clases/clase_rol.php');
-                    $lobjrol=new clsrol;
-                    $larols=$lobjrol->consultar_roles();
-                    for($i=0;$i<count($larols);$i++)
+<!-- EMPIEZA: RECOMENDACION -->
+<div class="alert alert-info" role="alert">
+    <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y eliminar los roles del sistema.
+</div>
+<!-- FIN: RECOMENDACION -->
+<?php
+if($registrar)
+{
+    echo '<a class="btn btn-success" id="btn_registrar" href="?vista=rol/registrar_rol"><i class="fa fa-plus"></i> Registrar rol</a>';
+}
+?>
+<!-- EMPIEZA: FORMULARIO -->
+<form role="form" class="form" action="../controlador/control_rol.php" method="POST" name="form_rol">
+    <input type="hidden" value="desactivar_rol" name="operacion" />
+    <input type="hidden"  name="idrol" id="cam_idrol"/>
+    <table class="cell-border compact hover stripe" id="filtro">
+        <thead>
+            <th>Codigo</th><th>Nombre</th><?php if($consultar || $eliminar)
+                    { echo '<th>Operación</th>';}?>
+        </thead>
+        <tbody>
+        <?php
+                require_once('../clases/clase_rol.php');
+                $lobjrol=new clsrol;
+                $larols=$lobjrol->consultar_roles();
+                for($i=0;$i<count($larols);$i++)
+                {
+                    echo '<tr>';
+                    echo '<td>'.$larols[$i][0].'</td>';
+                    echo '<td>'.$larols[$i][1].'</td>';
+                    if($consultar || $eliminar)
                     {
-                        echo '<tr>';
-                        echo '<td>'.$larols[$i][0].'</td>';
-                        echo '<td>'.$larols[$i][1].'</td>';
-                        if($consultar || $eliminar)
+                        echo '<td>';
+                        if($consultar)
                         {
-                            echo '<td>';
-                            if($consultar)
-                            {
-                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$larols[$i][0].')"><i class="fa fa-search"></i></a>';
-                            }
-                            if($eliminar)
-                            {
-                                echo ' <a class="btn btn-danger" href="#" onclick="eliminar('.$larols[$i][0].')" ><i class="fa fa-remove"></i></a>';
-                            }
-                            echo "</td>";                            
+                            echo '<a class="btn btn-info" href="#" onclick="buscar('.$larols[$i][0].')"><i class="fa fa-search"></i></a>';
                         }
-                        echo '</tr>';
+                        if($eliminar)
+                        {
+                            echo ' <a class="btn btn-danger" href="#" onclick="eliminar('.$larols[$i][0].')" ><i class="fa fa-remove"></i></a>';
+                        }
+                        echo "</td>";                            
                     }
-                ?>
-            </tbody>
-        </table>
-    </form>
+                    echo '</tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+</form>
+<!-- FIN: FORMULARIO -->
