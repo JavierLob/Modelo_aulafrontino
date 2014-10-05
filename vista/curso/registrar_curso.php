@@ -25,9 +25,9 @@
         <div class="col-md-6">
             <div class="form-group">
               <label for="cam_fecha_aperturacur">Fecha de apertura <strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Fecha de apertura del curso."></i></strong></label>
-                  <div class="input-group date" data-date="" id="dp1" data-date-format="dd-mm-yyyy">
-                      <input  class="form-control" name="fecha_aperturacur" id="cam_fecha_aperturacur" type="text" required>
-                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  <div class="input-group input-append date" data-date="" id="dp1" data-date-format="dd-mm-yyyy">
+                      <span class="input-group-addon add-on"><i class="fa fa-calendar"></i></span>
+                      <input class="form-control" name="fecha_aperturacur" id="cam_fecha_aperturacur" type="text" required>
                     </div>
             </div>
         </div>
@@ -35,8 +35,8 @@
             <div class="form-group">
               <label for="cam_fecha_cierrecur">Fecha de cierrre <strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Fecha de cierrre del curso."></i></strong></label>
                   <div class="input-group date" data-date="" id="dp2" data-date-format="dd-mm-yyyy">
+                      <span class="input-group-addon add-on"><i class="fa fa-calendar"></i></span>
                       <input class="form-control" name="fecha_cierrecur" id="cam_fecha_cierrecur" type="text" required>
-                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
             </div>
         </div>
