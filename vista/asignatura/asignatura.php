@@ -45,19 +45,22 @@ function activar(id)
     }
 }
 </script>    
-<div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3>Asignaturas</h3>
-    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras registrar, cosultar, modificar y desactivar los asignaturas del sistema.</div>
+<h1 class="page-header">Asignaturas</h1>
+    <!-- EMPIEZA: RECOMENDACION -->
+          <div class="alert alert-info" role="alert">
+            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y desactivar los asignaturas del sistema.
+          </div>
+    <!-- FIN: RECOMENDACION -->
     <?php
     if($registrar)
     {
         echo '<a class="btn btn-success" id="btn_registrar" href="?vista=asignatura/registrar_asignatura"><i class="icon-plus icon-white"></i> Registrar asignatura</a>';
     }
     ?>
-    <form action="../controlador/control_asignatura.php" method="POST" name="form_asignatura">
+    <form action="../controlador/control_asignatura.php" method="POST" name="form_asignatura" role="form" class="form">
         <input type="hidden" value="desactivar_asignatura" name="operacion" id="cam_operacion"/>
         <input type="hidden"  name="idasignatura" id="cam_idasignatura"/>
-        <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
+        <table class="cell-border compact hover stripe" id="filtro">
             <thead>
                 <th>Id</th><th>Código</th><th>Nombre</th><th>Descripción</th><th>Año</th><th>Unidades de credito</th><th>Horas</th><?php if($consultar || $desactivar)
                         { echo '<th>Operación</th>';}?>
@@ -82,13 +85,13 @@ function activar(id)
                             echo '<td>';
                             if($consultar)
                             {
-                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$laAsignaturas[$i]['idasignatura'].')"><i class="icon-search icon-white"></i></a>';
+                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$laAsignaturas[$i]['idasignatura'].')"><i class="fa fa-search icon-white"></i></a>';
                             }
                             if($desactivar)
                             {
                                 if($laAsignaturas[$i]['estatusasi']=='1')
                                 {
-                                    echo ' <a class="btn btn-danger" href="#" onclick="desactivar('.$laAsignaturas[$i]['idasignatura'].')" ><i class="icon-remove icon-white"></i></a>';
+                                    echo ' <a class="btn btn-danger" href="#" onclick="desactivar('.$laAsignaturas[$i]['idasignatura'].')" ><i class="fa fa-remove icon-white"></i></a>';
 
                                 }
                                 elseif ($laAsignaturas[$i]['estatusasi']=='0') 
@@ -104,4 +107,3 @@ function activar(id)
                 </tbody>
         </table>
     </form>
-</div>

@@ -7,7 +7,7 @@
     $lobjServicio->set_Servicio($id);
     $laServicio=$lobjServicio->consultar_servicio();
 ?>
-    <h1 class="page-header">Registrar servicio</h1>
+    <h1 class="page-header">Consultar servicio</h1>
     <!-- EMPIEZA: RECOMENDACION -->
       <div class="alert alert-info" role="alert">
         <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar un servicio en el sistema.
