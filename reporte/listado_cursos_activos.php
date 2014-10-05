@@ -18,7 +18,7 @@
    $lobjPdf->Ln(3);
 
    //Parametros de la función CELL (ancho,alto,texto,borde,salto de linea,alineación)
-   $lobjPdf->Cell(0,6,utf8_decode("LISTADO DE CURSOS"),0,1,"C");
+   $lobjPdf->Cell(0,6,utf8_decode("LISTADO DE CURSOS ACTIVOS"),0,1,"C");
    $lobjPdf->Cell(10,6,utf8_decode("Nº"),1,0,"C");
    $lobjPdf->Cell(45,6,utf8_decode("Nombre"),1,0,"C");
    $lobjPdf->Cell(35,6,utf8_decode("Sección"),1,0,"C");
