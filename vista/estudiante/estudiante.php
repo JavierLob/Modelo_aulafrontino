@@ -46,67 +46,64 @@ function activar(id)
     }
 }
 </script>    
-<div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Estudiantes</h3>
-    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras registrar, cosultar, modificar y eliminar los estudiantes del sistema.</div>
+<h1 class="page-header">Estudiantes</h1>
+    <!-- EMPIEZA: RECOMENDACION -->
+          <div class="alert alert-info" role="alert">
+            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y eliminar los estudiantes del sistema.
+          </div>
+    <!-- FIN: RECOMENDACION -->
     <?php
     if($registrar)
     {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=estudiante/registrar_estudiante"><i class="icon-plus icon-white"></i> Registrar estudiante</a>';
+        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=estudiante/registrar_estudiante"><i class="fa fa-plus"></i> Registrar asignatura</a>';
     }
     ?>
-    <form action="../controlador/control_estudiante.php" method="POST" name="form_estudiante">
-        <input type="hidden" value="desactivar_estudiante" name="operacion" id="cam_operacion" />
-        <input type="hidden"  name="idestudiante" id="cam_idestudiante"/>
-        <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
+    <form action="../controlador/control_asignatura.php" method="POST" name="form_asignatura" role="form" class="form">
+        <input type="hidden" value="desactivar_asignatura" name="operacion" id="cam_operacion"/>
+        <input type="hidden"  name="idasignatura" id="cam_idasignatura"/>
+        <table class="cell-border compact hover stripe" id="filtro">
             <thead>
-                <th>Nro.</th><th>Cédula</th><th>Apellidos</th><th>Nombres</th><th>Telefono Habitación</th><th>Correo</th>
-                <?php 
-                    if($consultar || $eliminar)
-                    { 
-                        echo '<th>Operación</th>';
-                    }
-                ?>
+                <th>Nro.</th><th>Código</th><th>Nombre</th><th>Descripción</th><th>Año</th><th>Unidades de credito</th><th>Horas</th><?php if($consultar || $desactivar)
+                        { echo '<th>Operación</th>';}?>
             </thead>
             <tbody>
             <?php
-                    require_once('../clases/clase_estudiante.php');
-                    $lobjEstudiante=new clsEstudiante;
-                    $laEstudiantes=$lobjEstudiante->listar_estudiantes();
-                    for($i=0;$i<count($laEstudiantes);$i++)
+                require_once('../clases/clase_estudiante.php');
+                $lobjEstudiante=new clsEstudiante;
+                $laEstudiantes=$lobjEstudiante->listar_estudiantes();
+                for($i=0;$i<count($laEstudiantes);$i++)
+                {
+                    echo '<tr>';
+                    echo '<td>'.($i+1).'</td>';
+                    echo '<td>'.$laEstudiantes[$i]['cedulaest'].'</td>';
+                    echo '<td>'.$laEstudiantes[$i]['apellido_unoest'].' '.$laEstudiantes[$i]['apellido_dosest'].'</td>';
+                    echo '<td>'.$laEstudiantes[$i]['nombre_unoest'].' '.$laEstudiantes[$i]['nombre_dosest'].'</td>';
+                    echo '<td>'.$laEstudiantes[$i]['telefono_habest'].'</td>';
+                    echo '<td>'.$laEstudiantes[$i]['correoest'].'</td>';
+                    if($consultar || $desactivar)
                     {
-                        echo '<tr>';
-                        echo '<td>'.($i+1).'</td>';
-                        echo '<td>'.$laEstudiantes[$i]['cedulaest'].'</td>';
-                        echo '<td>'.$laEstudiantes[$i]['apellido_unoest'].' '.$laEstudiantes[$i]['apellido_dosest'].'</td>';
-                        echo '<td>'.$laEstudiantes[$i]['nombre_unoest'].' '.$laEstudiantes[$i]['nombre_dosest'].'</td>';
-                        echo '<td>'.$laEstudiantes[$i]['telefono_habest'].'</td>';
-                        echo '<td>'.$laEstudiantes[$i]['correoest'].'</td>';
-                        if($consultar || $desactivar)
+                        echo '<td>';
+                        if($consultar)
                         {
-                            echo '<td>';
-                            if($consultar)
-                            {
-                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$laEstudiantes[$i]['idestudiante'].')"><i class="icon-search icon-white"></i></a>';
-                            }
-                            if($desactivar)
-                            {
-                                if($laEstudiantes[$i]['estatusest']=='1')
-                                {
-                                    echo ' <a class="btn btn-danger" href="#" onclick="desactivar('.$laEstudiantes[$i]['idestudiante'].')" ><i class="icon-remove icon-white"></i></a>';
-
-                                }
-                                elseif ($laEstudiantes[$i]['estatusest']=='0') 
-                                {
-                                    echo ' <a class="btn btn-warning" title="Restaurar" href="#" onclick="activar('.$laEstudiantes[$i]['idestudiante'].')" ><i class="icon-refresh icon-white"></i></a>';
-                                }
-                            }
-                            echo "</td>";
+                            echo '<a class="btn btn-info" href="#" onclick="buscar('.$laEstudiantes[$i]['idestudiante'].')"><i class="fa fa-search"></i></a>';
                         }
-                        echo '</tr>';
+                        if($desactivar)
+                        {
+                            if($laEstudiantes[$i]['estatusest']=='1')
+                            {
+                                echo ' <a class="btn btn-danger" href="#" onclick="desactivar('.$laEstudiantes[$i]['idestudiante'].')" ><i class="fa fa-remove"></i></a>';
+
+                            }
+                            elseif ($laEstudiantes[$i]['estatusest']=='0') 
+                            {
+                                echo ' <a class="btn btn-warning" title="Restaurar" href="#" onclick="activar('.$laEstudiantes[$i]['idestudiante'].')" ><i class="fa fa-refresh"></i></a>';
+                            }
+                        }
+                        echo "</td>";
                     }
-                ?>
+                    echo '</tr>';
+                }
+            ?>
                 </tbody>
         </table>
     </form>
-</div>
