@@ -79,7 +79,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="cam_correoest">Correo electrónico <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Correo electrónico del estudiante."><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="form-control" name="correoest" id="cam_correoest" required/>
+                <input type="email" class="form-control" name="correoest" id="cam_correoest" required/>
             </div>
         </div>
     </div>
