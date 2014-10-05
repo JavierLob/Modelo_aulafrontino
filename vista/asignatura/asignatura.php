@@ -54,7 +54,7 @@
 <?php
     if($registrar)
     {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=asignatura/registrar_asignatura"><i class="icon-plus icon-white"></i> Registrar asignatura</a>';
+        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=asignatura/registrar_asignatura"><i class="fa fa-plus"></i> Registrar asignatura</a>';
     }
 ?>
 <form role="form" class="form" action="../controlador/control_asignatura.php" method="POST" name="form_asignatura" role="form" class="form">
