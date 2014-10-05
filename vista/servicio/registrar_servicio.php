@@ -4,6 +4,7 @@
         <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar un servicio en el sistema.
       </div>
     <!-- FIN: RECOMENDACION -->
+    <!-- EMPIEZA: FORMULARIO -->
     <form role="form" class="form" action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="registrar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>
@@ -64,7 +65,8 @@
             <button type="button" class="btn btn-danger center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=servicio/servicio';"><i class="fa fa-chevron-left"></i> Regresar</button>
           </div>
           <div class="col-md-6">
-            <button type="submit" class="btn btn-danger center-block"><i class="fa fa-check" name="btn_enviar" id="btn_enviar"></i> Aceptar</button>
+            <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check"></i> Aceptar</button>
           </div>
         </div>
     </form>
+    <!-- FIN: FORMULARIO -->
