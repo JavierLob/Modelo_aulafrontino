@@ -32,7 +32,7 @@
         // se arma en la variable $menu todo el menu que se le mostrará al usuario
         $menu.='<li class="dropdown">'; 
         $menu.='<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$laModulos[$i][1].'<span class="caret"></span></a>';//Aquí se guar el nombre del módulo y los servicios de este modulo se van a ir anidando a partir de aquí.
-        $menu.='<ul class="dropdown-menu">';
+        $menu.='<ul class="dropdown-menu" role="menu">';
 
         $laServicios=$lobjRol->consultar_servicios($laModulos[$i][0]); // aquí se consultan y guardan en la variable $laServicios los servicios que tiene registrado este módulo.
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú

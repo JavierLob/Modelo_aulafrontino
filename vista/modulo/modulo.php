@@ -44,7 +44,7 @@ for($i=0;$i<count($laModulos);$i++)
 <?php
 if($registrar)
 {
-    echo '<a class="btn btn-success" id="btn_registrar" href="?vista=modulo/registrar_modulo"><i class="icon-plus icon-white"></i> Registrar módulo</a>';
+    echo '<a class="btn btn-success" id="btn_registrar" href="?vista=modulo/registrar_modulo"><i class="fa fa-plus"></i> Registrar módulo</a>';
 }
 ?>
 <!-- EMPIEZA: FORMULARIO -->

@@ -27,7 +27,7 @@ padding: 5px 15px;
 	display: none;
 }
 @media (max-width: 768px) {
-  .movil
+  .navbar .movil
   {
   	display: block;
   }
