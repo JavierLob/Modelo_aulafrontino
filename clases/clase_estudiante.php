@@ -30,7 +30,7 @@
 	        $this->llEstatus = true;
     	}
 		
-		public function set_Idestudiante($pnIdestudiante)
+		public function set_Estudiante($pnIdestudiante)
 		{
 			$this->lnIdestudiante = $pnIdestudiante;
 		}
@@ -89,7 +89,7 @@
 		{
 			$laEstudiante = array();
 			$this->conectar();
-			$sql = "SELECT * FROM testudiante WHERE cedulaest = '$this->lcCedula';";
+			$sql = "SELECT * FROM testudiante WHERE idestudiante='$this->lnIdestudiante';";
 			$pcsql = $this->filtro($sql);
 			while($laRow = $this->proximo($pcsql))
 			{
@@ -139,12 +139,10 @@
 			$this->conectar();
 			$sql = "INSERT INTO `testudiante` 
 					(`cedulaest`, `nombre_unoest`, `nombre_dosest`, `apellido_unoest`
-						, `apellido_dosest`, `direccionest`, `telefono_movest`, `telefono_habest`, `correoest`
-						, `estatusest`) 
+						, `apellido_dosest`, `direccionest`, `telefono_movest`, `telefono_habest`, `correoest`) 
 					VALUES 
 					('$this->lcCedula', UPPER('$this->lcNombreuno'), UPPER('$this->lcNombredos'), UPPER('$this->lcApellidouno')
-						,UPPER('$this->lcApellidodos'),UPPER('$this->lcDireccion'),'$this->lnTelefonoMovil','$this->lnTelefonoHab','$this->lcCorreo'
-						,'$this->llEstatus');";
+						,UPPER('$this->lcApellidodos'),UPPER('$this->lcDireccion'),'$this->lnTelefonoMovil','$this->lnTelefonoHab','$this->lcCorreo');";
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;

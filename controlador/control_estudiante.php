@@ -3,7 +3,7 @@
 	require_once("../clases/clase_estudiante.php");
 	$lobjEstudiante = new clsEstudiante;
 
-	$lobjEstudiante->set_Idestudiante($_POST['idestudiante']);
+	$lobjEstudiante->set_Estudiante($_POST['idestudiante']);
 	$lobjEstudiante->set_Cedula($_POST['cedulaest']);
 	$lobjEstudiante->set_Nombreuno($_POST['nombre_unoest']);
 	$lobjEstudiante->set_Nombredos($_POST['nombre_dosest']);
@@ -13,7 +13,7 @@
 	$lobjEstudiante->set_Telefonomovil($_POST['telefono_movest']);
 	$lobjEstudiante->set_Telefonohab($_POST['telefono_habest']);
 	$lobjEstudiante->set_Correo($_POST['correoest']);
-	$lobjEstudiante->set_Estatus($_POST['estatusest']);
+	$lobjEstudiante->set_Estatus(($_POST['estatusest']));
 
 	$operacion=$_POST['operacion'];
 

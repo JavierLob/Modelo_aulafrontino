@@ -22,28 +22,28 @@ for($i=0;$i<count($laModulos);$i++)
     }
 ?>
 <script>
- function buscar(id)
- {
+function buscar(id)
+{
     window.location.href="?vista=asignatura/consultar_asignatura&id="+id;
- }
-  function desactivar(id)
-  {
-     if(confirm("¿Está seguro que desea desactivar la asignatura seleccionada?"))
+}
+function desactivar(id)
+{
+    if(confirm("¿Está seguro que desea desactivar la asignatura seleccionada?"))
     {
       document.getElementById("cam_idasignatura").value=id;
       document.form_asignatura.submit();
     }
-  }
+}
 
-  function activar(id)
-  {
-     if(confirm("¿Desea restaurar la asignatura seleccionado?"))
+function activar(id)
+{
+    if(confirm("¿Desea activar la asignatura seleccionada?"))
     {
-      document.getElementById("cam_idasignatura").value=id;
-      document.getElementById("cam_operacion").value='activar_asignatura';
-      document.form_asignatura.submit();
+        document.getElementById("cam_idasignatura").value=id;
+        document.getElementById("cam_operacion").value='activar_asignatura';
+        document.form_asignatura.submit();
     }
-  }
+}
 </script>    
 <div style="float: left" class="col-lg-10 span10 pull-left">
     <h3>Asignaturas</h3>
