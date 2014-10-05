@@ -35,50 +35,54 @@ for($i=0;$i<count($laModulos);$i++)
     }
   }
 </script>    
-<div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Módulos</h3>
-    <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> Aquí podras registrar, cosultar, modificar y eliminar los módulos del sistema.</div>
-    <?php
-    if($registrar)
-    {
-        echo '<a class="btn btn-success" id="btn_registrar" href="?vista=modulo/registrar_modulo"><i class="icon-plus icon-white"></i> Registrar módulo</a>';
-    }
-    ?>
-    <form action="../controlador/control_modulo.php" method="POST" name="form_modulo">
-        <input type="hidden" value="eliminar_modulo" name="operacion" />
-        <input type="hidden"  name="idmodulo" id="cam_idmodulo"/>
-        <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
-            <thead>
-                <th>Codigo</th><th>Nombre</th><?php if($consultar || $eliminar)
-                        { echo '<th>Operación</th>';}?>
-            </thead>
-            <tbody>
-            <?php
-                    require_once('../clases/clase_modulo.php');
-                    $lobjModulo=new clsModulo;
-                    $laModulos=$lobjModulo->consultar_modulos();
-                    for($i=0;$i<count($laModulos);$i++)
-                    {
-                        echo '<tr>';
-                        echo '<td>'.$laModulos[$i][0].'</td>';
-                        echo '<td>'.$laModulos[$i][1].'</td>';
-                        if($consultar || $eliminar)
-                        {
-                            echo '<td>';
-                            if($consultar)
-                            {
-                                echo '<a class="btn btn-info" href="#" onclick="buscar('.$laModulos[$i][0].')"><i class="icon-search icon-white"></i></a>';
-                            }
-                            if($eliminar)
-                            {
-                                echo ' <a class="btn btn-danger" href="#" onclick="eliminar('.$laModulos[$i][0].')" ><i class="icon-remove icon-white"></i></a>';
-                            }
-                            echo "</td>";
-                        }
-                        echo '</tr>';
-                    }
-                ?>
-                </tbody>
-        </table>
-    </form>
+<h1 class="page-header">Módulo</h1>
+<!-- EMPIEZA: RECOMENDACION -->
+<div class="alert alert-info" role="alert">
+    <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y eliminar los módulos del sistema.
 </div>
+<!-- FIN: RECOMENDACION -->
+<?php
+if($registrar)
+{
+    echo '<a class="btn btn-success" id="btn_registrar" href="?vista=modulo/registrar_modulo"><i class="icon-plus icon-white"></i> Registrar módulo</a>';
+}
+?>
+<!-- EMPIEZA: FORMULARIO -->
+<form role="form" class="form" action="../controlador/control_modulo.php" method="POST" name="form_modulo">
+    <input type="hidden" value="eliminar_modulo" name="operacion" />
+    <input type="hidden"  name="idmodulo" id="cam_idmodulo"/>
+    <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
+        <thead>
+            <th>Codigo</th><th>Nombre</th><?php if($consultar || $eliminar)
+                    { echo '<th>Operación</th>';}?>
+        </thead>
+        <tbody>
+        <?php
+                require_once('../clases/clase_modulo.php');
+                $lobjModulo=new clsModulo;
+                $laModulos=$lobjModulo->consultar_modulos();
+                for($i=0;$i<count($laModulos);$i++)
+                {
+                    echo '<tr>';
+                    echo '<td>'.$laModulos[$i][0].'</td>';
+                    echo '<td>'.$laModulos[$i][1].'</td>';
+                    if($consultar || $eliminar)
+                    {
+                        echo '<td>';
+                        if($consultar)
+                        {
+                            echo '<a class="btn btn-info btn-sm" href="#" onclick="buscar('.$laModulos[$i][0].')"><i class="fa fa-search"></i></a>';
+                        }
+                        if($eliminar)
+                        {
+                            echo ' <a class="btn btn-danger btn-sm" href="#" onclick="eliminar('.$laModulos[$i][0].')" ><i class="fa fa-remove"></i></a>';
+                        }
+                        echo "</td>";
+                    }
+                    echo '</tr>';
+                }
+            ?>
+            </tbody>
+    </table>
+</form>
+<!-- FIN: FORMULARIO -->
