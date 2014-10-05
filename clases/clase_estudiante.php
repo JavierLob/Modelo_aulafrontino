@@ -9,6 +9,7 @@
 		private $lcNombredos;
 		private $lcApellidouno;
 		private $lcApellidodos;
+		private $lcSexo;
 		private $lcDireccion;
 		private $lnTelefonoMovil;
 		private $lnTelefonoHab;
@@ -23,6 +24,7 @@
 	        $this->lcNombredos = '';
 	        $this->lcApellidouno = '';
 	        $this->lcApellidodos = '';
+	        $this->lcSexo='';
 	        $this->lcDireccion = '';
 	        $this->lnTelefonoMovil = 0;
 	        $this->lnTelefonoHab = 0;
@@ -58,6 +60,11 @@
 		public function set_Apellidodos($pcApellidodos)
 		{
 			$this->lcApellidodos = $pcApellidodos;
+		}
+
+		public function set_Sexo($pcSexo)
+		{
+			$this->lcSexo = $pcSexo;
 		}
 
 		public function set_Direccion($pcDireccion)
@@ -99,6 +106,7 @@
 				$laEstudiante['nombre_dosest']	= $laRow['nombre_dosest'];
 				$laEstudiante['apellido_unoest']= $laRow['apellido_unoest'];
 				$laEstudiante['apellido_dosest']= $laRow['apellido_dosest'];
+				$laEstudiante['sexoest']= $laRow['sexoest'];
 				$laEstudiante['direccionest']	= $laRow['direccionest'];
 				$laEstudiante['telefono_movest']= $laRow['telefono_movest'];
 				$laEstudiante['telefono_habest']= $laRow['telefono_habest'];
@@ -124,11 +132,13 @@
 				$laEstudiante[$cont]['nombre_dosest']	= $laRow['nombre_dosest'];
 				$laEstudiante[$cont]['apellido_unoest']	= $laRow['apellido_unoest'];
 				$laEstudiante[$cont]['apellido_dosest']	= $laRow['apellido_dosest'];
+				$laEstudiante[$cont]['sexoest']			= $laRow['sexoest'];
 				$laEstudiante[$cont]['direccionest']	= $laRow['direccionest'];
 				$laEstudiante[$cont]['telefono_movest']	= $laRow['telefono_movest'];
 				$laEstudiante[$cont]['telefono_habest']	= $laRow['telefono_habest'];
 				$laEstudiante[$cont]['correoest']		= $laRow['correoest'];
 				$laEstudiante[$cont]['estatusest']		= $laRow['estatusest'];
+				$cont++;
 			}
 			$this->desconectar();
 			return $laEstudiante;
@@ -139,10 +149,10 @@
 			$this->conectar();
 			$sql = "INSERT INTO `testudiante` 
 					(`cedulaest`, `nombre_unoest`, `nombre_dosest`, `apellido_unoest`
-						, `apellido_dosest`, `direccionest`, `telefono_movest`, `telefono_habest`, `correoest`) 
+						, `apellido_dosest`, `direccionest`, `sexoest`, `telefono_movest`, `telefono_habest`, `correoest`) 
 					VALUES 
 					('$this->lcCedula', UPPER('$this->lcNombreuno'), UPPER('$this->lcNombredos'), UPPER('$this->lcApellidouno')
-						,UPPER('$this->lcApellidodos'),UPPER('$this->lcDireccion'),'$this->lnTelefonoMovil','$this->lnTelefonoHab','$this->lcCorreo');";
+						,UPPER('$this->lcApellidodos'),UPPER('$this->lcDireccion'), '$this->lcSexo' ,'$this->lnTelefonoMovil','$this->lnTelefonoHab','$this->lcCorreo');";
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
@@ -172,7 +182,7 @@
 			$sql="UPDATE `testudiante` SET 
 					`nombre_unoest`=UPPER('$this->lcNombreuno'),`nombre_dosest`=UPPER('$this->lcNombredos')
 					,`apellido_unoest`=UPPER('$this->lcApellidouno'),`apellido_dosest`=UPPER('$this->lcApellidodos')
-					,`direccionest`=UPPER('$this->lcDireccion'),`telefono_movest`='$this->lnTelefonoMovil'
+					,`direccionest`=UPPER('$this->lcDireccion'), `sexoest`='$this->lcSexo', `telefono_movest`='$this->lnTelefonoMovil'
 					,`telefono_habest`='$this->lnTelefonoHab',`correoest`='$this->lcCorreo' 
 				  WHERE idestudiante = '$this->lnIdestudiante' ;";
 			$lnHecho=$this->ejecutar($sql);			

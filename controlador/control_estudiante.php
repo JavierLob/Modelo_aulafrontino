@@ -9,6 +9,7 @@
 	$lobjEstudiante->set_Nombredos($_POST['nombre_dosest']);
 	$lobjEstudiante->set_Apellidouno($_POST['apellido_unoest']);
 	$lobjEstudiante->set_Apellidodos($_POST['apellido_dosest']);
+	$lobjEstudiante->set_Sexo($_POST['sexoest']);
 	$lobjEstudiante->set_Direccion($_POST['direccionest']);
 	$lobjEstudiante->set_Telefonomovil($_POST['telefono_movest']);
 	$lobjEstudiante->set_Telefonohab($_POST['telefono_habest']);

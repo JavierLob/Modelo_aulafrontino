@@ -33,6 +33,13 @@
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
+                <label>Sexo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Sexo del estudiante."><i class="fa fa-question" ></i></span></label>
+                <select name="sexoest" id="cam_sexoest" required>
+                    <option value="M">MASCULINO</option>
+                    <option value="F">FEMENINO</option>
+                </select>
+            </div>
+            <div class="col-lg-6 span6">
                 <label>Dirección <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Dirección de habitación del estudiante."><i class="fa fa-question" ></i></span></label>
                 <textarea name="direccionest" id="cam_direccionest"></textarea>
             </div>
