@@ -90,7 +90,16 @@
               </div>
             </div>
           </div>
-          <a href="http://getbootstrap.com/" target="_blank" class="text-info"><i class="fa fa-external-link"></i> Para mas información acerca de los estilos y componentes de bootstrap visitar la Pagina de Bootstrap</a>
+          <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <a href="http://getbootstrap.com/" target="_blank" class="text-info"><i class="fa fa-external-link"></i> Para mas información acerca de los estilos y componentes de bootstrap visitar la Página de Bootstrap</a>
+                </div>
+                <div class="form-group">
+                  <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank" class="text-info"><i class="fa fa-external-link"></i> Para mas información acerca de los iconos utilizados ingrese a la Página de Fontawesome</a>
+                </div>
+              </div>
+          </div>
           <!-- EMPIEZA: FORMULARIO -->
           <div class="row">
             <div class="col-md-12">
@@ -121,6 +130,6 @@
               </form>
             </div>
           </div>
-          <a href="https://datatables.net/" target="_blank" class="text-info"><i class="fa fa-external-link"></i> Para mas información acerca de las tablas visitar la Pagina de DataTables</a>
+          <a href="https://datatables.net/" target="_blank" class="text-info"><i class="fa fa-external-link"></i> Para mas información acerca de las tablas visitar la Página de DataTables</a>
 
           <!-- FIN: FORMULARIO -->
