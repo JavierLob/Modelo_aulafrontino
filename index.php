@@ -139,22 +139,43 @@
       <!-- START THE FEATURETTES -->
       <hr class="featurette-divider">
       <div class="row featurette">
-        <div class="col-md-7">
+        <div class="col-md-9">
           <h2 class="featurette-heading">Acerca <span class="text-muted"></span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3">
           <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
         </div>
       </div>
       <hr class="featurette-divider">
       <div class="row featurette" id="contacto">
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-        </div>
-        <div class="col-md-7" >
+        <div class="col-md-12">
           <h2 class="featurette-heading">Contacto <span class="text-muted"></span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <p class="lead">Puedes enviarnos tus inquietudes, comentarios, sugerencias y/o recomendaciones a través del siguiente formulario.</p>
+          <p>Ingresa tus datos de contacto, un mensaje corto abajo y lo contestaremos lo más pronto posible.</p>
+          <div class="row">
+            <div class="col-md-8 center-block">
+              <form role="form ">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Correo</label>
+                  <input type="email" class="form-control" id="" name="" placeholder="Escribe tu correo">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nombre</label>
+                  <input type="text" class="form-control" id="" name="" placeholder="Escribe tu nombre">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Apellido</label>
+                  <input type="text" class="form-control" id="" name="" placeholder="Escribe tu apellido">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">Mensaje</label>
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger">Enviar</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
       <hr class="featurette-divider">
