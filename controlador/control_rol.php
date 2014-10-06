@@ -22,7 +22,7 @@
 			{	
 				$_SESSION['msj']='Error en el registro';
 			}
-			header('location: ../vista/intranet.php?vista=rol/rol');
+			header('location: ../vista/intranet.php?vista=seguridad/rol');
 		break;
 		case 'editar_rol':
 			$hecho=$lobjRol->editar_rol();
@@ -34,7 +34,7 @@
 			{	
 				$_SESSION['msj']='Error al modificar';
 			}
-			header('location: ../vista/intranet.php?vista=rol/rol');
+			header('location: ../vista/intranet.php?vista=seguridad/rol');
 		break;
 		case 'eliminar_rol':
 			$hecho=$lobjRol->eliminar_rol();
@@ -46,7 +46,7 @@
 			{	
 				$_SESSION['msj']='Error al eliminar';
 			}
-			header('location: ../vista/intranet.php?vista=rol/rol');
+			header('location: ../vista/intranet.php?vista=seguridad/rol');
 		break;
 		case 'desactivar_rol':
 			$hecho=$lobjRol->eliminar_rol();
@@ -58,7 +58,7 @@
 			{	
 				$_SESSION['msj']='Error al desactivar';
 			}
-			header('location: ../vista/intranet.php?vista=rol/rol');
+			header('location: ../vista/intranet.php?vista=seguridad/rol');
 		break;
 		case 'activar_rol':
 			$hecho=$lobjRol->activar_rol();
@@ -70,7 +70,7 @@
 			{	
 				$_SESSION['msj']='Error al activar';
 			}
-			header('location: ../vista/intranet.php?vista=rol/rol');
+			header('location: ../vista/intranet.php?vista=seguridad/rol');
 		break;
 		case 'asignar_modulo':
 			$hecho=$lobjRol->asignar_modulo();
@@ -82,7 +82,7 @@
 			{	
 				$_SESSION['msj']='Error al asignar los modulo';
 			}
-			header('location: ../vista/intranet.php?vista=rol/asignar_servicio&id='.$_POST['idrol']);
+			header('location: ../vista/intranet.php?vista=seguridad/asignar_servicio&id='.$_POST['idrol']);
 		break;
 		case 'asignar_servicio':
 			$hecho=$lobjRol->asignar_servicio();
@@ -94,7 +94,7 @@
 			{	
 				$_SESSION['msj']='Error al asignar los servicios';
 			}
-			header('location: ../vista/intranet.php?vista=rol/asignar_servicio&id='.$_POST['idrol']);
+			header('location: ../vista/intranet.php?vista=seguridad/asignar_servicio&id='.$_POST['idrol']);
 		break;
 		default:
 			header('location: ../vista/intranet.php');

@@ -43,9 +43,9 @@
 			}
 		break;
 		default:
-			header('location: ../vista/intranet.php?vista=rol/rol');
+			header('location: ../vista/intranet.php?vista=seguridad/rol');
 		break;
 	}
 
-	header('location: ../vista/intranet.php?vista=rol/rol');
+	header('location: ../vista/intranet.php?vista=seguridad/rol');
 ?>

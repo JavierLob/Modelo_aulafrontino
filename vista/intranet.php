@@ -27,10 +27,20 @@
 
     $Acceso_servicio=false;//Para verificar que el usuario no entre a un servicio que no tiene asignado declaro una variable como false, y luego la cambiaré a true si alguno de los servicios que tiene asignado el usuario es igual a la direccion a la que está entrando.
 
+    //Obtengo la carpeta del modulo
+    $carpeta= split('/',$vista); 
+    if($carpeta[0]=='')
+        $activo='active';
+    // se arma en la variable $menu todo el menu que se le mostrará al usuario
+    $menu.='<li class="'.$activo.'"><a href="intranet.php">Inicio</a></li>';    
+
     for($i=0;$i<count($laModulos);$i++) //Se recorre un ciclo para poder extraer los datos de cada uno de los módulos que tiene asignado el rol
     {
-        // se arma en la variable $menu todo el menu que se le mostrará al usuario
-        $menu.='<li class="dropdown">'; 
+        
+        $modulo=strtolower($lobjUtil->quitar_acentos($laModulos[$i][1]));        
+        $activo=($modulo==$carpeta[0])?'active':'';
+
+        $menu.='<li class="dropdown '.$activo.'" >'; 
         $menu.='<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$laModulos[$i][1].'<span class="caret"></span></a>';//Aquí se guar el nombre del módulo y los servicios de este modulo se van a ir anidando a partir de aquí.
         $menu.='<ul class="dropdown-menu" role="menu">';
 
@@ -102,7 +112,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav movil">
-            <li class="active"><a href="intranet.php">Inicio</a></li>          
             <?php echo $menu;?>
           </ul>
           <div class="navbar-form navbar-right">
@@ -120,7 +129,6 @@
         <!-- EMPIEZA: SIDEBAR -->
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="intranet.php">Inicio</a></li>          
             <?php echo $menu;?>
           </ul>
         </div>

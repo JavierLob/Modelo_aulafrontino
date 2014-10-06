@@ -61,10 +61,10 @@
 <!-- FIN: FORMULARIO -->
 <div class="row">
   <div class="col-md-6">
-    <button type="button" class="btn btn-success center-block" name="btn_modulos" id="btn_modulos" onclick="window.location.href='?vista=rol/asignar_modulo';"><i class="fa fa-check-square-o"></i> Asignar módulos</button>
+    <button type="button" class="btn btn-success center-block" name="btn_modulos" id="btn_modulos" onclick="window.location.href='?vista=seguridad/asignar_modulo';"><i class="fa fa-check-square-o"></i> Asignar módulos</button>
   </div>
   <div class="col-md-6">
-    <button type="button" class="btn btn-success center-block" name="btn_servicios" id="btn_servicios" onclick="window.location.href='?vista=rol/asignar_modulo';"><i class="fa fa-check-square-o" ></i> Asignar servicio</button>
+    <button type="button" class="btn btn-success center-block" name="btn_servicios" id="btn_servicios" onclick="window.location.href='?vista=seguridad/asignar_servicio';"><i class="fa fa-check-square-o" ></i> Asignar servicio</button>
   </div>
 </div>
 

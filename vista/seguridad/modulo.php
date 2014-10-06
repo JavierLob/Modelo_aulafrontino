@@ -5,16 +5,16 @@ for($i=0;$i<count($laModulos);$i++)
         $laServicios=$lobjRol->consultar_servicios($laModulos[$i][0]); 
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
         {
-            if($laServicios[$j][2]=='modulo/consultar_modulo')
+            if($laServicios[$j][2]=='seguridad/consultar_modulo')
             {
                 $consultar=true;
             }
-            if($laServicios[$j][2]=='modulo/registrar_modulo')
+            if($laServicios[$j][2]=='seguridad/registrar_modulo')
             {
 
                 $registrar=true;
             }
-            if($laServicios[$j][2]=='modulo/eliminar_modulo')
+            if($laServicios[$j][2]=='seguridad/eliminar_modulo')
             {
                 $eliminar=true;
             }
@@ -24,7 +24,7 @@ for($i=0;$i<count($laModulos);$i++)
 <script>
  function buscar(id)
  {
-    window.location.href="?vista=modulo/consultar_modulo&id="+id;
+    window.location.href="?vista=seguridad/consultar_modulo&id="+id;
  }
   function eliminar(id)
   {
@@ -44,7 +44,7 @@ for($i=0;$i<count($laModulos);$i++)
 <?php
 if($registrar)
 {
-    echo '<a class="btn btn-success" id="btn_registrar" href="?vista=modulo/registrar_modulo"><i class="fa fa-plus"></i> Registrar módulo</a>';
+    echo '<a class="btn btn-success" id="btn_registrar" href="?vista=seguridad/registrar_modulo"><i class="fa fa-plus"></i> Registrar módulo</a>';
 }
 ?>
 <!-- EMPIEZA: FORMULARIO -->

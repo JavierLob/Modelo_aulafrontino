@@ -44,9 +44,9 @@
 			}
 		break;
 		default:
-			header('location: ../vista/intranet.php?vista=modulo/modulo');
+			header('location: ../vista/intranet.php?vista=seguridad/modulo');
 		break;
 	}
 
-	header('location: ../vista/intranet.php?vista=modulo/modulo');
+	header('location: ../vista/intranet.php?vista=seguridad/modulo');
 ?>

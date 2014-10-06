@@ -47,9 +47,9 @@
 			}
 		break;
 		default:
-			header('location: ../vista/intranet.php?vista=servicio/servicio');
+			header('location: ../vista/intranet.php?vista=seguridad/servicio');
 		break;
 	}
 
-	header('location: ../vista/intranet.php?vista=servicio/servicio');
+	header('location: ../vista/intranet.php?vista=seguridad/servicio');
 ?>
