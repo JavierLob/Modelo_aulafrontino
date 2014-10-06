@@ -60,7 +60,7 @@
                     if($consultar || $desactivar)
                     {
                         echo '<td>';
-                        echo '<a class="btn-sm btn-success" href="#" onclick="inscribir('.$laCursos[$i]['idcurso'].')"><i class="fa fa-check"></i></a>';
+                        echo '<a class="btn-sm btn-success" href="#" onclick="inscribir('.$laCursos[$i]['idcurso'].')"><i class="fa fa-check"></i></a> <a class="btn-sm btn-warning" href="../reporte/listado_clases.php?id='.$laCursos[$i]['idcurso'].'"><i class="fa fa-file-text"></i></a>';
                         echo "</td>";
                     }
                     echo '</tr>';
