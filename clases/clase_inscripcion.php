@@ -67,13 +67,32 @@
 			return $inscrito;
 		}
 
-/*tinscripcion
-Columna	Tipo	Nulo	Predeterminado	Enlaces a 	Comentarios
-idinscripcion 	int(11)	No 	  	  	 
-idestudiante 	int(11)	No 	  	testudiante -> idestudiante  	 
-idcurso 	int(11)	No 	  	tcurso -> idcurso  	 
-fecha_inscripcion 	timestamp	No 	CURRENT_TIMESTAMP  	  	 
-estatus */
+		public function listado_clases()
+		{
+			$laEstudiante = array();
+			$cont = 0;
+			$this->conectar();
+			$sql = "SELECT testudiante.* FROM testudiante, tinscripcion WHERE testudiante.idestudiante = tinscripcion.idestudiante AND tinscripcion.idcurso = '$this->lnCurso' ORDER BY apellido_unoest, apellido_dosest, nombre_unoest, nombre_dosest ASC;";
+			$pcsql = $this->filtro($sql);
+			while($laRow = $this->proximo($pcsql))
+			{
+				$laEstudiante[$cont]['idestudiante']	= $laRow['idestudiante'];
+				$laEstudiante[$cont]['cedulaest']		= $laRow['cedulaest'];
+				$laEstudiante[$cont]['nombre_unoest']	= $laRow['nombre_unoest'];
+				$laEstudiante[$cont]['nombre_dosest']	= $laRow['nombre_dosest'];
+				$laEstudiante[$cont]['apellido_unoest']	= $laRow['apellido_unoest'];
+				$laEstudiante[$cont]['apellido_dosest']	= $laRow['apellido_dosest'];
+				$laEstudiante[$cont]['sexoest']			= $laRow['sexoest'];
+				$laEstudiante[$cont]['direccionest']	= $laRow['direccionest'];
+				$laEstudiante[$cont]['telefono_movest']	= $laRow['telefono_movest'];
+				$laEstudiante[$cont]['telefono_habest']	= $laRow['telefono_habest'];
+				$laEstudiante[$cont]['correoest']		= $laRow['correoest'];
+				$laEstudiante[$cont]['estatusest']		= $laRow['estatusest'];
+				$cont++;
+			}
+			$this->desconectar();
+			return $laEstudiante;
+		}
 		
 
 	}

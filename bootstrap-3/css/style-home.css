@@ -65,7 +65,10 @@ body {
 /* Carousel base class */
 .carousel {
   height: 500px;
-  margin-bottom: 60px;
+}
+#acerca
+{
+  padding-top: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -108,7 +111,7 @@ body {
 ------------------------- */
 
 .featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+  margin: 50px 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -157,6 +160,39 @@ body {
 
 @media (min-width: 992px) {
   .featurette-heading {
-    margin-top: 120px;
+    margin-top: 50px;
   }
+}
+.form
+{
+  padding-top: 10px;
+  border: solid 1px #eee;
+  overflow: hidden;
+}
+.form>.row,.form h3.form-section
+{
+  margin: 0 20px; 
+}
+.form>.row:last-child
+{
+  padding: 20px; 
+  background: #f8f8f8;
+  border-top: solid 1px #eee;
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+  margin-bottom: -10px !important;
+}
+.form h3.form-section {
+  font-size: 22px;
+  font-weight: 300;
+  border-bottom: 4px solid #eee;
+  margin: 15px 20px;
+}
+.form .text-help
+{
+  color: #F89406;
+}
+.center-block
+{
+  float: none;
 }
