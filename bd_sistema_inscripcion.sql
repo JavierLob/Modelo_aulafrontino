@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-10-2014 a las 00:29:08
+-- Tiempo de generación: 06-10-2014 a las 00:35:22
 -- Versión del servidor: 5.6.12-log
 -- Versión de PHP: 5.4.16
 
@@ -67,12 +67,11 @@ CREATE TABLE IF NOT EXISTS `tbitacora` (
   `accesobit` tinyint(1) NOT NULL,
   PRIMARY KEY (`idtbitacora`),
   KEY `fk_tbitacora_tusuario1_idx` (`tusuario_idtusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=876 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=880 ;
 
 --
 -- Volcado de datos para la tabla `tbitacora`
 --
-
 -- --------------------------------------------------------
 
 --
@@ -128,6 +127,10 @@ CREATE TABLE IF NOT EXISTS `testudiante` (
 --
 -- Volcado de datos para la tabla `testudiante`
 --
+
+INSERT INTO `testudiante` (`idestudiante`, `cedulaest`, `nombre_unoest`, `nombre_dosest`, `apellido_unoest`, `apellido_dosest`, `sexoest`, `direccionest`, `telefono_movest`, `telefono_habest`, `correoest`, `estatusest`) VALUES
+(1, '21561768', 'JAVIER', 'ANTONIO', 'MARTÃ­N', 'LOBO', 'M', 'VILLA ARAURE 1, #6244', '04129428301', '02556216731', 'recupera.javier@gmail.com', 1);
+
 -- --------------------------------------------------------
 
 --
