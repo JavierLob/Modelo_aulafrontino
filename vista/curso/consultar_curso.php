@@ -1,3 +1,12 @@
+/**
+* Consultar Curso = vista ; Permite ver y modificar un curso.
+*
+* @package    ModeloAulafrontino
+* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
+* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
+* @link       https://github.com/EquipoAulaFrontino
+* @version    v1.0
+*/
 <?php
     require_once("../clases/clase_curso.php");
     $lobjCurso=new clsCurso;

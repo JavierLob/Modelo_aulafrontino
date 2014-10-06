@@ -1,3 +1,12 @@
+/**
+* Consultar Rol = vista ; Permite ver y modificar un rol.
+*
+* @package    ModeloAulafrontino
+* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
+* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
+* @link       https://github.com/EquipoAulaFrontino
+* @version    v1.0
+*/
 <?php
     require_once("../clases/clase_rol.php");
     $lobjrol=new clsRol;

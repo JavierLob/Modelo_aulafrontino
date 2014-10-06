@@ -1,3 +1,12 @@
+/**
+* Estudiante = vista ; Permite ver el listado de estudiantes.
+*
+* @package    ModeloAulafrontino
+* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
+* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
+* @link       https://github.com/EquipoAulaFrontino
+* @version    v1.0
+*/
 <?php
 $consultar= $registrar= $eliminar=false;
 for($i=0;$i<count($laModulos);$i++) 
