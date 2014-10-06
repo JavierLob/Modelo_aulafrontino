@@ -1,4 +1,13 @@
 <?php
+	/**
+	* Clase inscripcion
+	*
+	* @package    ModeloAulafrontino
+	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
+	* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
+	* @link       https://github.com/EquipoAulaFrontino
+	* @version    v1.0
+	*/
 	require_once('../nucleo/ModeloConect.php');
 	class clsInscripcion extends ModeloConect
 	{

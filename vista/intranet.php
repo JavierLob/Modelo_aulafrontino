@@ -1,5 +1,13 @@
 ﻿<?php
-    /* ESTE MODELO DE SEGURIDAD ESTÁ HECHO CON FINES ACADEMICOS, SU DISTRIBUCIÓN ES GRATUITA, CUALQUIER ADAPTACIÓN, MODIFICACIÓN O MEJORA QUE SE HAGA APARTIR DE ESTE CODIGO DEBE SER NOTIFICADA A LA COMUNIDAD DE LA CUAL FUE OBTENIDO Y/0 A SU CREADOR JAVIER MARTÍN AL CORREO RECUPERA.JAVIER@GMAIL.COM */
+    /**
+    * Intranet [Aqui se cargan todas las vistas]
+    *
+    * @package    ModeloAulafrontino
+    * @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
+    * @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
+    * @link       https://github.com/EquipoAulaFrontino
+    * @version    v1.0
+    */
     session_start(); //inicia la session, la cual permite trabajar con la variable $_SESSION
 
     $usuario=(isset($_SESSION['usuario']))?$_SESSION['usuario']:"";//toma el valor que se guarda en la variable vista que está en la variable $_SESSION

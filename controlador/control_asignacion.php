@@ -1,4 +1,13 @@
 <?php
+	/**
+	* Controlador asignacion
+	*
+	* @package    ModeloAulafrontino
+	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
+	* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
+	* @link       https://github.com/EquipoAulaFrontino
+	* @version    v1.0
+	*/
 	session_start();
 	require_once("../clases/clase_rol.php");
 	$lobjRol=new clsRol;
