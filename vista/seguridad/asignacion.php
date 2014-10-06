@@ -1,4 +1,4 @@
-/**
+<!--
 * Asignación = vista ; Permite ver los modulos y servicios asignados a los roles del sistema.
 *
 * @package    ModeloAulafrontino
@@ -6,7 +6,7 @@
 * @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
 * @link       https://github.com/EquipoAulaFrontino
 * @version    v1.0
-*/
+*/-->
 <script>
   function eliminar(id)
   {

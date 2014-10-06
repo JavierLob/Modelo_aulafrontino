@@ -1,4 +1,4 @@
-/**
+<!--
 * Asignación de módulo = vista ; Permite asignar a los modulos a los roles.
 *
 * @package    ModeloAulafrontino
@@ -6,7 +6,7 @@
 * @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
 * @link       https://github.com/EquipoAulaFrontino
 * @version    v1.0
-*/
+*/-->
 <script type="text/javascript">
     function buscar_modulo(idrol)
     {

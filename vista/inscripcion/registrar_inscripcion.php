@@ -1,4 +1,4 @@
-/**
+<!--/**
 * Registrar Inscripción = vista ; Permite registrar a los estudiantes en un curso.
 *
 * @package    ModeloAulafrontino
@@ -6,7 +6,7 @@
 * @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
 * @link       https://github.com/EquipoAulaFrontino
 * @version    v1.0
-*/
+*/-->
 <?php
     require_once("../clases/clase_curso.php");
     $lobjCurso=new clsCurso;

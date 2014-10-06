@@ -1,4 +1,4 @@
-/**
+<!--/**
 * Consultar Servicio = vista ; Permite ver y modificar un servicio.
 *
 * @package    ModeloAulafrontino
@@ -6,7 +6,7 @@
 * @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
 * @link       https://github.com/EquipoAulaFrontino
 * @version    v1.0
-*/
+*/-->
 <?php
     require_once("../clases/clase_servicio.php");
     $lobjServicio=new clsServicio;

@@ -1,4 +1,4 @@
-/**
+<!--
 * Asignación de servicios = vista ; Permite asignar a los servicios a los roles.
 *
 * @package    ModeloAulafrontino
@@ -6,7 +6,7 @@
 * @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
 * @link       https://github.com/EquipoAulaFrontino
 * @version    v1.0
-*/
+*/-->
 <h1 class="page-header">Asignar servicio</h1>
 <!-- EMPIEZA: RECOMENDACION -->
 <div class="alert alert-info" role="alert">

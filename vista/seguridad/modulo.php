@@ -1,4 +1,4 @@
-/**
+<!--/**
 * Módulo = vista ; Permite ver el listado de módulos registrados.
 *
 * @package    ModeloAulafrontino
@@ -6,7 +6,7 @@
 * @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
 * @link       https://github.com/EquipoAulaFrontino
 * @version    v1.0
-*/
+*/-->
 <?php
 $consultar= $registrar= $eliminar=false;
 for($i=0;$i<count($laModulos);$i++) 
